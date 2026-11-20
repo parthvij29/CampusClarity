@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "query": "What is the minimum attendance required to appear in exams?",
+    "domain": "Attendance",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-101"
+  },
+  {
+    "id": 2,
+    "query": "How much attendance relaxation can Dean grant on medical grounds?",
+    "domain": "Attendance",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-101"
+  },
+  {
+    "id": 3,
+    "query": "What is the deadline to submit medical documents for attendance condonation?",
+    "domain": "Attendance",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-101"
+  },
+  {
+    "id": 4,
+    "query": "What happens if my attendance is below 65%?",
+    "domain": "Attendance",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-102"
+  },
+  {
+    "id": 5,
+    "query": "What grade is given to debarred students for attendance shortage?",
+    "domain": "Attendance",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-102"
+  },
+  {
+    "id": 6,
+    "query": "Do debarred students have to pay extra fees to repeat a course in summer?",
+    "domain": "Attendance",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-102"
+  },
+  {
+    "id": 7,
+    "query": "Is sports participation valid for attendance relaxation?",
+    "domain": "Attendance",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-ATT-101"
+  },
+  {
+    "id": 8,
+    "query": "Can attendance relaxation be given for attending a friend's wedding?",
+    "domain": "Attendance",
+    "type": "Edge",
+    "expected_status": "not found",
+    "expected_section": null
+  },
+  {
+    "id": 9,
+    "query": "What are the letter grades and points in the 10-point scale?",
+    "domain": "Grading",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-201"
+  },
+  {
+    "id": 10,
+    "query": "What is the minimum grade needed to pass a course?",
+    "domain": "Grading",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-201"
+  },
+  {
+    "id": 11,
+    "query": "How is the Semester Grade Point Average (SGPA) calculated?",
+    "domain": "Grading",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-201"
+  },
+  {
+    "id": 12,
+    "query": "What grade point does 'P' grade correspond to?",
+    "domain": "Grading",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-201"
+  },
+  {
+    "id": 13,
+    "query": "What happens if a student gets an F grade in a course?",
+    "domain": "Grading",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-202"
+  },
+  {
+    "id": 14,
+    "query": "If I score 95% in supplementary exam, can I get an O grade?",
+    "domain": "Grading",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-202"
+  },
+  {
+    "id": 15,
+    "query": "How will my transcript show that I cleared a course through backlog exam?",
+    "domain": "Grading",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-GRD-202"
+  },
+  {
+    "id": 16,
+    "query": "What is the formula to convert CGPA to absolute percentage?",
+    "domain": "Grading",
+    "type": "Invalid",
+    "expected_status": "not found",
+    "expected_section": null
+  },
+  {
+    "id": 17,
+    "query": "What are the rules regarding carrying a smartwatch into the exam hall?",
+    "domain": "Examinations",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-301"
+  },
+  {
+    "id": 18,
+    "query": "What penalty is imposed if a student is caught with cheat sheets?",
+    "domain": "Examinations",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-301"
+  },
+  {
+    "id": 19,
+    "query": "What committee conducts the hearing for UFM cases?",
+    "domain": "Examinations",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-301"
+  },
+  {
+    "id": 20,
+    "query": "Within how many days can I apply for re-evaluation of my answer paper?",
+    "domain": "Examinations",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-302"
+  },
+  {
+    "id": 21,
+    "query": "What is the fee for paper re-evaluation?",
+    "domain": "Examinations",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-302"
+  },
+  {
+    "id": 22,
+    "query": "Is the re-evaluation fee refundable if my grade improves?",
+    "domain": "Examinations",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-302"
+  },
+  {
+    "id": 23,
+    "query": "When does an answer script go to a third independent evaluator?",
+    "domain": "Examinations",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-EXM-302"
+  },
+  {
+    "id": 24,
+    "query": "Can I bring a programmable graphic calculator into the mathematics exam?",
+    "domain": "Examinations",
+    "type": "Invalid",
+    "expected_status": "not found",
+    "expected_section": null
+  },
+  {
+    "id": 25,
+    "query": "When is the tuition fee payment deadline for each semester?",
+    "domain": "Fees",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-FEE-401"
+  },
+  {
+    "id": 26,
+    "query": "What is the late fee per day during the 7-day grace period?",
+    "domain": "Fees",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-FEE-401"
+  },
+  {
+    "id": 27,
+    "query": "What action is taken if fee dues remain unpaid after the grace period?",
+    "domain": "Fees",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-FEE-401"
+  },
+  {
+    "id": 28,
+    "query": "How much fee is refunded if I cancel admission 20 days before classes start?",
+    "domain": "Fees",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-FEE-402"
+  },
+  {
+    "id": 29,
+    "query": "What deduction is made on 100% tuition refund?",
+    "domain": "Fees",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-FEE-402"
+  },
+  {
+    "id": 30,
+    "query": "What refund do I get if I withdraw admission 40 days after classes start?",
+    "domain": "Fees",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-FEE-402"
+  },
+  {
+    "id": 31,
+    "query": "Can semester fees be paid in monthly installment cheques?",
+    "domain": "Fees",
+    "type": "Invalid",
+    "expected_status": "not found",
+    "expected_section": null
+  },
+  {
+    "id": 32,
+    "query": "What is the eligibility criteria for the Dean's Merit Scholarship?",
+    "domain": "Fees",
+    "type": "Invalid",
+    "expected_status": "not found",
+    "expected_section": null
+  },
+  {
+    "id": 33,
+    "query": "What is the campus gate in-time for hostel residents on weekdays?",
+    "domain": "Hostel",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-HST-501"
+  },
+  {
+    "id": 34,
+    "query": "How many hours before must a student apply for a Night Out Pass?",
+    "domain": "Hostel",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-HST-501"
+  },
+  {
+    "id": 35,
+    "query": "Whose authorization is required for an overnight hostel night pass?",
+    "domain": "Hostel",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-HST-501"
+  },
+  {
+    "id": 36,
+    "query": "Are electric induction stoves permitted inside hostel rooms?",
+    "domain": "Hostel",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-HST-502"
+  },
+  {
+    "id": 37,
+    "query": "What is the penalty if caught with alcohol or an electric heater in the hostel?",
+    "domain": "Hostel",
+    "type": "Normal",
+    "expected_status": "answered",
+    "expected_section": "SEC-HST-502"
+  },
+  {
+    "id": 38,
+    "query": "What happens on the second offense of keeping prohibited items in the hostel?",
+    "domain": "Hostel",
+    "type": "Edge",
+    "expected_status": "answered",
+    "expected_section": "SEC-HST-502"
+  },
+  {
+    "id": 39,
+    "query": "Can hostel students order outside food delivery after 1:00 AM?",
+    "domain": "Hostel",
+    "type": "Invalid",
+    "expected_status": "not found",
+    "expected_section": null
+  },
+  {
+    "id": 40,
+    "query": "Can day scholars stay overnight in a friend's hostel room on paying guest charges?",
+    "domain": "Hostel",
+    "type": "Invalid",
+    "expected_status": "not found",
+    "expected_section": null
+  }
+]

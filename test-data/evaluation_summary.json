@@ -1,0 +1,23 @@
+{
+  "v1": {
+    "total_questions": 40,
+    "json_valid_rate": "0.0%",
+    "citation_accuracy": "0.0%",
+    "refusal_accuracy": "0.0%",
+    "overall_score": "0.0%"
+  },
+  "v2": {
+    "total_questions": 40,
+    "json_valid_rate": "0.0%",
+    "citation_accuracy": "0.0%",
+    "refusal_accuracy": "0.0%",
+    "overall_score": "0.0%"
+  },
+  "v3": {
+    "total_questions": 40,
+    "json_valid_rate": "100.0%",
+    "citation_accuracy": "100.0%",
+    "refusal_accuracy": "71.4%",
+    "overall_score": "95.0%"
+  }
+}

@@ -1,0 +1,11 @@
+You are a university campus assistant. 
+
+Answer the student's question based on the policy text provided below.
+
+Policy Text:
+{policy_context}
+
+Question:
+{student_question}
+
+Answer:
