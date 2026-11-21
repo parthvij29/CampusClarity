@@ -185,7 +185,7 @@ def build_milestone_2_pdf():
     links_data = [
         [Paragraph("<b>Deliverable</b>", table_hdr), Paragraph("<b>Link (Public / Anyone with Link can View)</b>", table_hdr)],
         [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph("https://campus-helpdesk-assistant.vercel.app<br/><i>(Live Modern React / Node Web Application deployed on Vercel; runnable via <code>cd web && npm run dev</code>)</i>", table_cell)],
-        [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/your-username/campus-helpdesk-assistant<br/><i>(Public GitHub repo with README, prompts, code, web, test-data, docs, changelog)</i>", table_cell)],
+        [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/parthvij29/CampusClarity<br/><i>(Public GitHub repo with README, prompts, code, web, test-data, docs, changelog)</i>", table_cell)],
         [Paragraph("<b>Reel Link (Q13, Q14)</b>", table_cell_bold), Paragraph("https://youtu.be/unlisted-reel-link<br/><i>(Unlisted YouTube demo; <b>Exact Length: 118 seconds</b>)</i>", table_cell)]
     ]
     t_links = Table(links_data, colWidths=[130, 410])

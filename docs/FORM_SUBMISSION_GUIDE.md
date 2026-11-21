@@ -20,7 +20,7 @@
 | **Q9** | Main AI tool and model | `Gemini Flash in Google Antigravity` | Tool and model used. |
 | **Q10** | Number of prompts (1–50) | `5` | **5 distinct prompts in 5-stage pipeline** (P1_Intent_Classifier, P2_Context_Extractor, P3_Grounded_Answerer, P4_Citation_Extractor, P5_Safety_Refusal_Guard). Exactly 5 prompt sheets in Section 2(c)! |
 | **Q11** | Prototype link | `https://campus-helpdesk-assistant.streamlit.app` | Open prototype link. Evaluator must NOT need to request access! |
-| **Q12** | Repository or folder link | *[Paste your public GitHub repo link]* | Public GitHub repository or OneDrive link. |
+| **Q12** | Repository or folder link | `https://github.com/parthvij29/CampusClarity` | Public GitHub repository link (checked and working). |
 | **Q13** | Reel link | *[Paste your Drive or unlisted YouTube link]* | Google Drive or YouTube (Unlisted), set to "Anyone with the link can view". |
 | **Q14** | Reel length | `118` | Exact duration in seconds (between 90 and 150). |
 | **Q15** | Supporting document type | Select: **`Technical report`** | One of the 5 allowed types. |

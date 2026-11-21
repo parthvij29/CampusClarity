@@ -38,7 +38,7 @@ The **Campus Helpdesk Assistant** is an audited, 5-stage prompt engineering work
 
 ## 🔗 Important Links
 - **Prototype Link (Vercel):** `https://campus-helpdesk-assistant.vercel.app` *(or your team's Vercel deployment URL)*
-- **GitHub Repository:** Public GitHub Repository URL *(Replace with your repository URL)*
+- **GitHub Repository:** https://github.com/parthvij29/CampusClarity
 - **Reel Link (90–150s):** Drive / Unlisted YouTube Video Link *(Exact length in seconds: 118s)*
 
 ---

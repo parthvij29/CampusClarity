@@ -23,7 +23,7 @@
 
 ### The Three Deliverable Links
 - **Prototype Link (Q11):** `https://campus-helpdesk-assistant.streamlit.app` *(or local/Colab deployment link)*
-- **GitHub Repository Link (Q12):** `https://github.com/your-username/campus-helpdesk-assistant`
+- **GitHub Repository Link (Q12):** `https://github.com/parthvij29/CampusClarity`
 - **Reel Demonstration Link (Q13):** `https://youtu.be/unlisted-reel-link` *(Exact Duration: 118 seconds)*
 
 ---
