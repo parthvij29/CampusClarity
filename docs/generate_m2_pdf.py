@@ -1,7 +1,10 @@
 """
 Generates the comprehensive Milestone 2 Submission PDF: M2_T16_CampusHelpdeskAssistant.pdf
 Conforms strictly to the 7 required sections and formatting specifications of SCSE4041.
-Features the 5-Prompt Modular Pipeline Architecture (Q10 = 5) and 6-member team roster.
+Features:
+- Modern React + Node.js Web Prototype deployed on Vercel
+- 5-Prompt Modular Pipeline Architecture (Q10 = 5)
+- 6-member team roster
 """
 
 import os
@@ -27,7 +30,6 @@ def build_milestone_2_pdf():
 
     styles = getSampleStyleSheet()
 
-    # Typography & Styles
     doc_title_style = ParagraphStyle(
         'DocTitle',
         parent=styles['Heading1'],
@@ -134,7 +136,7 @@ def build_milestone_2_pdf():
     story.append(Spacer(1, 10))
     story.append(Paragraph("SCSE4041 MINI PROJECT — MILESTONE 2", doc_sub_style))
     story.append(Paragraph("Campus Helpdesk Assistant", doc_title_style))
-    story.append(Paragraph("5-Stage Modular Prompt Pipeline for Grounded Policy Answering with Verifiable Citations", doc_sub_style))
+    story.append(Paragraph("5-Stage Modular Prompt Pipeline with React & Vercel Web Prototype", doc_sub_style))
     story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor('#1E3A8A'), spaceAfter=12))
 
     cover_meta = [
@@ -164,7 +166,7 @@ def build_milestone_2_pdf():
         [Paragraph("S24CSEU1616", table_cell_bold), Paragraph("Parth Vij (Team Lead)", table_cell_bold), Paragraph("Lead & 5-Prompt Pipeline Architect (P1-P5 workflow, few-shot tuning)", table_cell)],
         [Paragraph("S24CSEU0217", table_cell_bold), Paragraph("Maitreyi Chaudhary", table_cell), Paragraph("Knowledge Base Curation (10 handbook sections across 5 domains)", table_cell)],
         [Paragraph("S24CSEU0211", table_cell_bold), Paragraph("Madhav Puri", table_cell), Paragraph("Document Grounding Retriever & P1/P2 Intent Router logic", table_cell)],
-        [Paragraph("S24CSEU1615", table_cell_bold), Paragraph("Prashant Mangal", table_cell), Paragraph("Streamlit Prototype Client & P3 Grounded Synthesis integration", table_cell)],
+        [Paragraph("S24CSEU1615", table_cell_bold), Paragraph("Prashant Mangal", table_cell), Paragraph("React / Node.js Web Application & Vercel Cloud Deployment", table_cell)],
         [Paragraph("S24CSEU0055", table_cell_bold), Paragraph("Kushagra Garg", table_cell), Paragraph("P4 Citation Verbatim Substring Auditor & P5 JSON Guard Engine", table_cell)],
         [Paragraph("S24CSEU0212", table_cell_bold), Paragraph("Madhav Goyal", table_cell), Paragraph("40-Test Benchmarking Suite, Edge Case Testing & Technical Report", table_cell)]
     ]
@@ -182,8 +184,8 @@ def build_milestone_2_pdf():
     story.append(Paragraph("The Three Deliverable Links:", sub_heading_style))
     links_data = [
         [Paragraph("<b>Deliverable</b>", table_hdr), Paragraph("<b>Link (Public / Anyone with Link can View)</b>", table_hdr)],
-        [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph("https://campus-helpdesk-assistant.streamlit.app<br/><i>(Interactive Streamlit Prototype; runnable locally via <code>streamlit run code/app.py</code>)</i>", table_cell)],
-        [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/your-username/campus-helpdesk-assistant<br/><i>(Public GitHub repo with README, prompts, code, test-data, docs, changelog)</i>", table_cell)],
+        [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph("https://campus-helpdesk-assistant.vercel.app<br/><i>(Live Modern React / Node Web Application deployed on Vercel; runnable via <code>cd web && npm run dev</code>)</i>", table_cell)],
+        [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/your-username/campus-helpdesk-assistant<br/><i>(Public GitHub repo with README, prompts, code, web, test-data, docs, changelog)</i>", table_cell)],
         [Paragraph("<b>Reel Link (Q13, Q14)</b>", table_cell_bold), Paragraph("https://youtu.be/unlisted-reel-link<br/><i>(Unlisted YouTube demo; <b>Exact Length: 118 seconds</b>)</i>", table_cell)]
     ]
     t_links = Table(links_data, colWidths=[130, 410])
@@ -206,15 +208,15 @@ def build_milestone_2_pdf():
     story.append(Paragraph("(a) Design Rationale & 5-Prompt Architecture", sub_heading_style))
     story.append(Paragraph(
         "<b>1. What problem, for whom:</b> University regulations regarding attendance thresholds, grading scales, examination sanctions, fee deadlines, and hostel curfews are dispersed across voluminous handbooks, circulars, and notices that are periodically revised. Undergraduates and postgraduates often skip reading these documents, relying on informal peer advice or unconstrained general AI chatbots. The former spreads outdated rumors, while the latter invents non-existent regulations with confident hallucination. This results in student debarment, avoidable financial penalties, and immense administrative helpdesk overhead.<br/>"
-        "<b>2. Input and Output:</b> The input consists of a student query paired with dynamically retrieved, labelled policy sections. The output is a strictly typed JSON object with four fields: <code>answer</code> (plain English explanation), <code>quoted_source_text</code> (exact verbatim sentence extracted from policy), <code>section_id</code> (official section code), and <code>status</code> (<code>'answered'</code> or <code>'not found'</code>).<br/>"
+        "<b>2. Input and Output:</b> The input consists of a natural language student query paired with dynamically retrieved, labelled policy sections. The output is a strictly typed JSON object with four fields: <code>answer</code> (plain English explanation), <code>quoted_source_text</code> (exact verbatim sentence extracted from policy), <code>section_id</code> (official section code), and <code>status</code> (<code>'answered'</code> or <code>'not found'</code>).<br/>"
         "<b>3. How many prompts/steps and why (Q10 = 5 Prompts):</b> Rather than overloading a single prompt with contradictory responsibilities, our solution decomposes the workflow into a <b>modular 5-prompt pipeline</b>: "
         "<b>(1) P1_Intent_Classifier:</b> Classifies query into one of 5 policy domains or flags out-of-scope intent; "
         "<b>(2) P2_Context_Extractor:</b> Filters candidate sections to isolate operative policy clauses; "
         "<b>(3) P3_Grounded_Answerer:</b> Synthesizes plain-English explanation strictly bounded by isolated clauses; "
         "<b>(4) P4_Citation_Extractor:</b> Identifies and extracts the exact verbatim sentence and section ID; "
         "<b>(5) P5_Safety_Refusal_Guard:</b> Performs adversarial inspection, validates schema, and formats raw JSON output with graceful Academic Office referral.<br/>"
-        "<b>4. Which tool/model and why:</b> We utilize <b>Google Gemini 1.5 Flash in Google Antigravity / Google AI Studio</b> configured at <b><code>temperature=0.2</code></b>. Gemini 1.5 Flash offers superior negative instruction following, sub-850ms latency across multi-step chains, and 100% adherence to raw JSON formatting.<br/>"
-        "<b>5. What changed since Milestone 1:</b> In Milestone 1, we tested a single ungrounded baseline prompt (v1) suffering a 45% hallucination rate on unanswerable queries. Since Milestone 1, we engineered this 5-stage decomposed prompt pipeline, built a 10-section policy knowledge base, developed a Streamlit UI with automated substring auditing, and constructed a 40-test benchmarking harness.",
+        "<b>4. Which tool/model and why:</b> We utilize <b>Google Gemini 1.5 Flash in Google Antigravity / Google AI Studio</b> configured at <b><code>temperature=0.2</code></b>. The web application is built with <b>React, Node.js, Vite</b> and deployed to <b>Vercel</b>, providing a fluid, instant-loading student dashboard with live pipeline visualization.<br/>"
+        "<b>5. What changed since Milestone 1:</b> In Milestone 1, we tested a single ungrounded baseline prompt (v1) suffering a 45% hallucination rate on unanswerable queries. Since Milestone 1, we engineered this 5-stage decomposed prompt pipeline, built a 10-section policy knowledge base, developed a full-stack React web prototype hosted on Vercel, and constructed a 40-test benchmarking harness.",
         body_style
     ))
     story.append(Spacer(1, 4))
@@ -353,7 +355,7 @@ def build_milestone_2_pdf():
         "<b>(2) Grounding Engine:</b> Sub-millisecond keyword and lexical alignment matcher extracting relevant policy clauses. "
         "<b>(3) 5-Prompt Pipeline:</b> <code>P1</code> to <code>P5</code> operating sequentially with Gemini 1.5 Flash (T=0.2). "
         "<b>(4) Integrity & Substring Auditor:</b> Automated verification layer checking verbatim substring containment. "
-        "<b>(5) Web Application Prototype:</b> Interactive Streamlit client (<code>code/app.py</code>). "
+        "<b>(5) Modern React Web Prototype:</b> Full-stack Node.js / React application (<code>web/</code>) deployed on Vercel with real-time pipeline visualizer. "
         "<b>(6) Benchmark Suite:</b> 40-question quantitative evaluation harness (<code>code/evaluate.py</code>).",
         body_style
     ))
@@ -589,9 +591,9 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
 
     story.append(Paragraph("(c) Known Limitations & What We Will Try Next", sub_heading_style))
     story.append(Paragraph(
-        "<b>1. Multi-Section Precedence Conflicts (Observed in Test 9):</b> When a general rule (e.g. 10% Dean relaxation in SEC-ATT-101) is constrained by a hard floor in a secondary section (e.g. absolute debarment below 65% in SEC-ATT-102), the model can favor the first retrieved rule. <i>What we will try next:</i> Implement a two-pass critique prompt that explicitly identifies and cross-checks qualifying exceptions across adjacent sections before generating the final JSON.<br/>"
+        "<b>1. Multi-Section Precedence Conflicts (Observed in Test 9):</b> When a general rule (e.g. 10% Dean relaxation in SEC-ATT-101) is constrained by a hard floor in a secondary section (e.g. absolute debarment below 65% in SEC-ATT-102), the model can favor the first retrieved rule. <i>What we will try next:</i> Implement a cross-clause critique step within P2 to reconcile exceptions before P3 synthesis.<br/>"
         "<b>2. Lexical Retriever Sensitivity to Student Slang:</b> Queries formulated in complex colloquial idioms or unindexed Hinglish phrasing without matching keywords risk missing context retrieval. <i>What we will try next:</i> Replace basic keyword matching with dense vector semantic search using ChromaDB and sentence transformers.<br/>"
-        "<b>3. Adversarial Circumvention Susceptibility (Observed in Test 12):</b> Questions framed as 'how to bypass' procedural checks can lead the model to explain the standard process rather than issuing an immediate policy non-compliance refusal. <i>What we will try next:</i> Deploy a pre-retrieval safety guardrail classifier that detects adversarial intent and immediately triggers a non-compliance refusal.",
+        "<b>3. Adversarial Circumvention Susceptibility (Observed in Test 12):</b> Questions framed as 'how to bypass' procedural checks can lead the model to explain the standard process rather than issuing an immediate policy non-compliance refusal. <i>What we will try next:</i> Deploy a pre-retrieval safety guardrail classifier within P1 that detects adversarial intent and immediately triggers a non-compliance refusal.",
         body_style
     ))
 
@@ -610,9 +612,9 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
 
     story.append(Paragraph("What Changed Since Milestone 1 (3–5 lines):", sub_heading_style))
     story.append(Paragraph(
-        "1. Restructured the repository into standardized directories: <code>prompts/</code> (versioned v1, v2, v3, final), <code>code/</code>, <code>test-data/</code>, <code>data/</code>, and <code>docs/</code>.<br/>"
+        "1. Restructured the repository into standardized directories: <code>prompts/</code> (versioned v1, v2, v3, final), <code>web/</code> (React app), <code>code/</code>, <code>test-data/</code>, <code>data/</code>, and <code>docs/</code>.<br/>"
         "2. Decomposed monolithic prompting into an audited 5-stage prompt pipeline (<code>P1</code> to <code>P5</code>) with few-shot exemplars and JSON schema enforcement.<br/>"
-        "3. Developed an interactive Streamlit prototype (<code>app.py</code>) featuring live policy context preview, verbatim quote highlighting, and substring validation.<br/>"
+        "3. Developed a full-stack React / Node.js web prototype (<code>web/</code>) deployed on Vercel with a real-time 5-prompt pipeline visualizer.<br/>"
         "4. Built an automated 40-test benchmarking suite (<code>evaluate.py</code>) tracking JSON schema validity, citation verifiability, and refusal accuracy.<br/>"
         "5. Populated a comprehensive <code>CHANGELOG.md</code> documenting commits, prompt iterations, and empirical metric gains.",
         body_style
@@ -634,7 +636,7 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
 
     tech_summary = """TECHNICAL REPORT EXECUTIVE SUMMARY:
 - System Architecture: 5-stage modular prompt pipeline (P1 Intent Classifier -> P2 Context Extractor -> P3 Grounded Answerer -> P4 Citation Substring Extractor -> P5 Safety Refusal Guard).
-- Tools & Models: Google Gemini 1.5 Flash in Google Antigravity / Google AI Studio, Temperature 0.2, Streamlit 1.66 prototype, ReportLab PDF compilation.
+- Tools & Models: Google Gemini 1.5 Flash in Google Antigravity / Google AI Studio, Temperature 0.2, React + Node.js (Vite) Web Application deployed on Vercel.
 - Prompt Engineering: 3 iterations leading to a 5-prompt production pipeline.
 - Empirical Results: 100% JSON schema validity (up from 0%), 100% citation verifiability (up from 0%), 71.4% refusal accuracy, 95% overall benchmark score across 40 test cases.
 - Limitations & Future Work: Multi-clause conflict resolution critic, ChromaDB semantic embeddings, and input adversarial intent classifier planned for Milestone 3."""
@@ -676,9 +678,9 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
         [
             Paragraph("<b>Prashant Mangal</b>", table_cell_bold),
             Paragraph("S24CSEU1615", table_cell),
-            Paragraph("Prototype & UI Engineering", table_cell),
-            Paragraph("Built interactive Streamlit web application, live context preview, and P3 synthesis UI.", table_cell),
-            Paragraph("<code>code/app.py</code>", table_cell),
+            Paragraph("React Frontend & Vercel Deploy", table_cell),
+            Paragraph("Engineered modern React / Node.js web prototype with live 5-prompt visualizer; deployed to Vercel.", table_cell),
+            Paragraph("<code>web/src/App.jsx</code>, <code>web/vercel.json</code>", table_cell),
             Paragraph("16%", table_cell_bold)
         ],
         [
@@ -686,7 +688,7 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
             Paragraph("S24CSEU0055", table_cell),
             Paragraph("Integrity Auditor & Validation", table_cell),
             Paragraph("Developed raw JSON schema validation (P5) and P4 verbatim substring containment verifier.", table_cell),
-            Paragraph("<code>code/engine.py</code> (lines 56-120)", table_cell),
+            Paragraph("<code>code/engine.py</code>, <code>web/src/utils/engine.js</code>", table_cell),
             Paragraph("16%", table_cell_bold)
         ],
         [
