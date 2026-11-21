@@ -1,7 +1,7 @@
-code/
+/code
+/docs
+/prompts
+/test-data
+/data
 *.py
-data/
-docs/
-prompts/
-test-data/
 *.pdf

@@ -1,4 +1,4 @@
-import { STUDENT_HANDBOOK } from "../data/studentHandbook";
+import { STUDENT_HANDBOOK } from "../studentHandbook";
 
 /**
  * 5-Stage Prompt Pipeline Engine for Campus Helpdesk Assistant

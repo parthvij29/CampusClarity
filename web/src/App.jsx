@@ -14,7 +14,7 @@ import {
   Terminal,
   Cpu
 } from "lucide-react";
-import { STUDENT_HANDBOOK } from "./data/studentHandbook";
+import { STUDENT_HANDBOOK } from "./studentHandbook";
 import { runPipeline } from "./utils/engine";
 import "./App.css";
 
