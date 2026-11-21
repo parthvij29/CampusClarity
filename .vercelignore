@@ -1,0 +1,7 @@
+code/
+*.py
+data/
+docs/
+prompts/
+test-data/
+*.pdf
