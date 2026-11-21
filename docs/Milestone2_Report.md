@@ -7,21 +7,23 @@
 
 - **Project Title:** Campus Helpdesk Assistant
 - **Problem Pool:** C1 — University Policy Grounded Query Answering Workflow
-- **Team ID:** T23 *(Use your allotted Team ID from Milestone 1)*
+- **Team ID:** T16 *(Use your allotted Team ID from Milestone 1)*
 - **Team Name:** PolicyGuard
-- **Course & Batch:** SCSE4041 Prompt Engineering | Batch B13-24
-- **Faculty Mentor:** Dr. / Prof. [Faculty Name]
+- **Course & Batch:** SCSE4041 Prompt Engineering | B.Tech CSE
+- **Faculty Mentor:** Dr. / Prof. Faculty Mentor
 - **Submission Date:** November 22, 2026
 
-### Team Members
-1. **S24CSEU1001** — Member 1 (Team Leader)
-2. **S24CSEU1002** — Member 2
-3. **S24CSEU1003** — Member 3
-4. **S24CSEU1004** — Member 4
+### Team Members (6 Members)
+1. **S24CSEU1616** — Parth Vij (Team Leader)
+2. **S24CSEU0217** — Maitreyi Chaudhary
+3. **S24CSEU0211** — Madhav Puri
+4. **S24CSEU1615** — Prashant Mangal
+5. **S24CSEU0055** — Kushagra Garg
+6. **S24CSEU0212** — Madhav Goyal
 
 ### The Three Deliverable Links
 - **Prototype Link (Q11):** `https://campus-helpdesk-assistant.streamlit.app` *(or local/Colab deployment link)*
-- **GitHub Repository Link (Q12):** `https://github.com/your-team/campus-helpdesk-assistant`
+- **GitHub Repository Link (Q12):** `https://github.com/your-username/campus-helpdesk-assistant`
 - **Reel Demonstration Link (Q13):** `https://youtu.be/unlisted-reel-link` *(Exact Duration: 118 seconds)*
 
 ---
@@ -75,18 +77,14 @@
 
   ---
   Example 1 (Answerable Query):
-  [Context]:
-  Section [SEC-EXM-302]: A student desiring re-evaluation of their end-term answer script must submit a formal application through the Student Portal within 7 calendar days from the date of grade declaration, accompanied by a non-refundable re-evaluation fee of Rs. 1,000 per course.
+  [Context]: Section [SEC-EXM-302]: A student desiring re-evaluation of their end-term answer script must submit a formal application through the Student Portal within 7 calendar days from the date of grade declaration, accompanied by a non-refundable re-evaluation fee of Rs. 1,000 per course.
   [Question]: What is the deadline and fee to apply for paper re-evaluation?
-  [Output]:
-  {"answer": "You can apply for re-evaluation within 7 calendar days from grade declaration via the Student Portal by paying a non-refundable fee of Rs. 1,000 per course.", "quoted_source_text": "A student desiring re-evaluation of their end-term answer script must submit a formal application through the Student Portal within 7 calendar days from the date of grade declaration, accompanied by a non-refundable re-evaluation fee of Rs. 1,000 per course.", "section_id": "SEC-EXM-302", "status": "answered"}
+  [Output]: {"answer": "You can apply for re-evaluation within 7 calendar days from grade declaration via the Student Portal by paying a non-refundable fee of Rs. 1,000 per course.", "quoted_source_text": "A student desiring re-evaluation of their end-term answer script must submit a formal application through the Student Portal within 7 calendar days from the date of grade declaration, accompanied by a non-refundable re-evaluation fee of Rs. 1,000 per course.", "section_id": "SEC-EXM-302", "status": "answered"}
 
   Example 2 (Unanswerable / Out of Scope Query):
-  [Context]:
-  Section [SEC-HST-501]: All resident hostel students must enter the campus gates and hostel premises by 9:30 PM on weekdays and 10:30 PM on weekends.
+  [Context]: Section [SEC-HST-501]: All resident hostel students must enter the campus gates and hostel premises by 9:30 PM on weekdays and 10:30 PM on weekends.
   [Question]: What are the gym timings and membership fees for day scholars?
-  [Output]:
-  {"answer": "Information regarding gym timings and day scholar membership fees is not found in the official policy documents provided. Please contact the Academic Office or Campus Facilities Desk for assistance.", "quoted_source_text": null, "section_id": null, "status": "not found"}
+  [Output]: {"answer": "Information regarding gym timings and day scholar membership fees is not found in the official policy documents provided. Please contact the Academic Office or Campus Facilities Desk for assistance.", "quoted_source_text": null, "section_id": null, "status": "not found"}
   ---
 
   Current Policy Context:
@@ -98,7 +96,7 @@
   JSON Output:
   ```
 - **What each variable holds:**
-  - `{policy_context}`: Contains the retrieved handbook section text prefixed with section IDs (e.g., `Section [SEC-ATT-101]: ...`).
+  - `{policy_context}`: Contains the retrieved handbook section text prefixed with section IDs.
   - `{student_question}`: Contains the student's natural language question.
 - **Number of examples included:** `2` graded few-shot examples (1 answerable case showing verbatim quote extraction; 1 unanswerable case demonstrating strict refusal with null quotes).
 - **Output format:** Raw JSON object adhering strictly to `{ "answer": str, "quoted_source_text": str|null, "section_id": str|null, "status": "answered"|"not found" }`.
@@ -146,48 +144,6 @@ We have developed a complete, end-to-end grounded query answering workflow:
 | **v2** | Added 4-field JSON schema (`answer`, `quoted_source_text`, `section_id`, `status`) and quote requirement. | Required structured data and verifiable sources. | Answers became more grounded, but markdown backticks (````json````) broke automated JSON parsing in 3 out of 10 runs; negative queries hallucinated fake section IDs. |
 | **v3 (Final)** | Added 2 graded few-shot examples (1 answered, 1 refusal), raw JSON directive without markdown fences, strict null quote rule on refusals, and temperature 0.2. | Prevent markdown parse breaks and enforce graceful refusal on out-of-scope questions. | **JSON valid in 10 out of 10 runs (100%)**; citation accuracy reached 100% on valid queries; refusal accuracy reached 71.4% with zero false claims. |
 
-#### Full Prompt Text: Version 1 (v1)
-```text
-You are a university campus assistant. 
-
-Answer the student's question based on the policy text provided below.
-
-Policy Text:
-{policy_context}
-
-Question:
-{student_question}
-
-Answer:
-```
-
-#### Full Prompt Text: Version 2 (v2)
-```text
-You are a university campus helpdesk assistant. 
-Answer student questions using ONLY the official policy text provided below.
-
-Policy Sections:
-{policy_context}
-
-Student Question:
-{student_question}
-
-Instructions:
-1. Find the relevant section from the policy text.
-2. Answer the question in simple language.
-3. Quote the exact sentence used and provide the section ID.
-4. If the answer is not in the text, say not found and tell them to contact the academic office.
-
-Output your answer as a JSON object with:
-- "answer": simple explanation
-- "quoted_source_text": exact sentence quoted
-- "section_id": section ID
-- "status": "answered" or "not found"
-```
-
-#### Full Prompt Text: Version 3 (v3 - Final Production)
-*(Refer to full text in Section 2(c) above and `prompts/final/P1_CampusHelpdesk_v3.txt`)*
-
 ---
 
 # Section 4: Demonstration and Testing
@@ -213,17 +169,9 @@ Output your answer as a JSON object with:
 
 ### (b) Screenshots of Real Prototype Runs
 *(See images in `docs/`)*
-1. **Test 1 (Normal Run - Attendance Rule):** `docs/screenshot_test_1.png` — Demonstrates successful extraction, green `STATUS: ANSWERED` badge, plain English summary, and highlighted verbatim quote from `SEC-ATT-101` passing the substring integrity audit.
-2. **Test 6 (Edge Case - 68% Medical Condonation):** `docs/screenshot_test_6.png` — Illustrates correct boundary evaluation applying medical relaxation clauses.
-3. **Test 10 (Invalid / Refusal Run - Wi-Fi Password):** `docs/screenshot_test_10.png` — Demonstrates amber `STATUS: NOT FOUND` badge, null quote fields, and automatic fallback routing to the Academic Office.
-
-### (c) Known Limitations & Next Steps
-1. **Multi-Clause Conflict Resolution (Observed in Test 9):** When general rules (e.g., 10% relaxation) are superseded by hard floors in secondary sections (e.g., debarment below 65%), single-turn synthesis occasionally favors the first clause.  
-   *What we will try next:* Implement a two-phase prompt pipeline with a dedicated Conflict Resolution Critic that reconciles policy exceptions before final synthesis.
-2. **Lexical Keyword Vulnerability:** Slang-heavy or misspelled student queries can bypass keyword-based context retrieval.  
-   *What we will try next:* Integrate semantic vector search using ChromaDB and dense embeddings.
-3. **Adversarial Circumvention Attempts (Observed in Test 12):** Queries framed as "how to bypass" rules need proactive safety filtering.  
-   *What we will try next:* Add an input guardrail classifier that detects adversarial intent and refuses assistance before policy injection.
+1. **Test 1 (Normal Run - Attendance Rule):** `docs/screenshot_test_1.png`
+2. **Test 6 (Edge Case - 68% Medical Condonation):** `docs/screenshot_test_6.png`
+3. **Test 10 (Invalid / Refusal Run - Wi-Fi Password):** `docs/screenshot_test_10.png`
 
 ---
 
@@ -231,31 +179,6 @@ Output your answer as a JSON object with:
 
 ### (a) Repository Structure
 *(Refer to screenshot in `docs/screenshot_repo.png`)*
-```text
-project/
-|-- README.md                 # Project guide, execution steps, team info, links
-|-- CHANGELOG.md              # Milestone 1 to Milestone 2 change history
-|-- prompts/
-|   |-- v1/                   # Baseline prompt (P1_v1.txt)
-|   |-- v2/                   # Schema-focused prompt (P1_v2.txt)
-|   |-- v3/                   # Refusal & Few-shot prompt (P1_v3.txt)
-|   `-- final/                # Production prompt (P1_CampusHelpdesk_v3.txt)
-|-- code/
-|   |-- app.py                # Streamlit Interactive Prototype
-|   |-- engine.py             # Grounding, Substring Verifier & LLM Handler
-|   |-- evaluate.py           # Evaluation Suite & Accuracy Benchmark
-|   `-- requirements.txt      # Dependencies
-|-- test-data/
-|   |-- test_inputs.json      # 12 Normal, Edge & Invalid test table cases
-|   |-- comprehensive_40.json # 40 benchmark questions dataset
-|   `-- evaluation_summary.json
-|-- data/
-|   `-- student_handbook.json # Labelled policy sections across 5 domains
-`-- docs/
-    |-- diagrams/             # Workflow, RAG, and Task Decomposition diagrams
-    |-- Milestone2_Report.pdf # Official 7-section submission PDF
-    `-- TechnicalReport.pdf   # 2-page Supporting Technical Report
-```
 
 ### (b) What Changed Since Milestone 1 (3–5 Lines)
 1. Constructed a modular repository architecture separating prompts (`v1/`, `v2/`, `v3/`, `final/`), application code, empirical test datasets, and system documentation.
@@ -267,9 +190,7 @@ project/
 
 # Section 6: Supporting Document
 
-*(The 2-page Supporting Technical Report is embedded directly here in Section 6, and is also provided as the separate upload PDF `PolicyGuard_TechnicalReport.pdf`).*
-
-*(Refer to complete text in `docs/Technical_Report.md`)*
+*(Refer to complete text in `docs/Technical_Report.md` and compiled PDF `PolicyGuard_TechnicalReport.pdf`)*
 
 ---
 
@@ -277,10 +198,12 @@ project/
 
 | Member Name | Enrollment No. | Role | Tasks Done in Milestone 2 | Evidence | Contribution (%) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Member 1 (Lead)** | S24CSEU1001 | Prompt Design & Engineering | Wrote prompt versions v1, v2, v3; designed few-shot exemplars; tuned temperature to 0.2. | `prompts/final/P1_CampusHelpdesk_v3.txt`, `prompts/v1/P1_v1.txt` | 25% |
-| **Member 2** | S24CSEU1002 | Knowledge Base & Retrieval | Curated official student handbook JSON (10 sections, 5 domains); built keyword grounding retriever. | `data/student_handbook.json`, `code/engine.py` | 25% |
-| **Member 3** | S24CSEU1003 | Prototype & UI Engineering | Built interactive Streamlit application; implemented verbatim substring auditor & JSON parser. | `code/app.py`, `docs/generate_run_screenshots.py` | 25% |
-| **Member 4** | S24CSEU1004 | Testing, Benchmarking & Docs | Formulated 12-case test table (with honest fails) & 40-test suite; authored M2 & Technical Reports. | `code/evaluate.py`, `test-data/test_inputs.json`, `docs/Milestone2_Report.md` | 25% |
+| **Parth Vij (Lead)** | S24CSEU1616 | Lead & Prompt Architecture | Wrote prompt versions v1, v2, v3; designed few-shot refusal exemplars; hyperparameter tuning (T=0.2). | `prompts/final/P1_CampusHelpdesk_v3.txt`, `prompts/v1/P1_v1.txt` | **20%** |
+| **Maitreyi Chaudhary** | S24CSEU0217 | Knowledge Base Engineering | Curated student handbook (10 sections across 5 domains); labelled Section IDs and keywords. | `data/student_handbook.json` | **16%** |
+| **Madhav Puri** | S24CSEU0211 | Retrieval & Grounding | Built lexical grounding retriever and dynamic prompt context formatting logic. | `code/engine.py` (lines 20–55) | **16%** |
+| **Prashant Mangal** | S24CSEU1615 | Prototype & UI Engineering | Built interactive Streamlit web application, live context preview, and quote highlighting. | `code/app.py` | **16%** |
+| **Kushagra Garg** | S24CSEU0055 | Integrity & Schema Auditor | Developed raw JSON schema validation and verbatim substring containment verifier. | `code/engine.py` (lines 56–120) | **16%** |
+| **Madhav Goyal** | S24CSEU0212 | Benchmarking & Technical Report | Formulated 12-case test table and 40-test benchmarking suite; authored Technical Report. | `code/evaluate.py`, `test-data/test_inputs.json` | **16%** |
 
-**Total Contribution:** 100%  
-*Confirmation: All team members have reviewed and agreed to the task allocation and percentage distribution listed above.*
+**Total Contribution:** 100% (20 + 16 + 16 + 16 + 16 + 16 = 100%).  
+*Confirmation: All 6 team members have reviewed and confirmed unanimous agreement on this allocation.*

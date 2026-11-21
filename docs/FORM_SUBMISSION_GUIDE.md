@@ -1,34 +1,35 @@
 # Microsoft Form (Milestone 2) Submission Guide
 **Submission URL:** https://forms.cloud.microsoft/r/GUPcGsWdRr  
 **Deadline:** Sunday, 22 November 2026, 11:59 PM  
-**Important Rule:** Evaluators cross-check every number entered in the form against the PDF. All values below match the generated PDF exactly.
+**Important Rule:** Evaluators cross-check every number and detail entered in the form against the PDF. All values below match the generated PDF (`M2_T16_CampusHelpdeskAssistant.pdf`) exactly.
 
 ---
 
-### Question-by-Question Form Responses
+### Question-by-Question Form Responses (Ready to Copy-Paste)
 
 | Question No. | Field Name | Exact Response to Enter | Notes / Instructions |
 | :--- | :--- | :--- | :--- |
-| **Q1** | Team ID | `T23` *(or your team's assigned ID)* | Use the exact Team ID given to your team after Milestone 1. |
-| **Q2** | Team name | `PolicyGuard` *(or your team name)* | Must match Milestone 1 and PDF cover page. |
-| **Q3** | Project title | `Campus Helpdesk Assistant` | Exactly matches PDF title. |
-| **Q4–5** | Team leader name and enrollment no. | `Member 1` & `S24CSEU1001` | Format: `S24CSEU1001` (Replace with leader's actual details). |
-| **Q6** | Group (batch) | `B13-24` | Enter your official WhatsApp batch group. |
-| **Q7** | Enrollment numbers of all members | `S24CSEU1001`<br/>`S24CSEU1002`<br/>`S24CSEU1003`<br/>`S24CSEU1004` | One per line, leader included. Format: `S24CSEU1234`. |
-| **Q8** | Project type | Select: **`RAG / Retrieval`** and **`Prompt Engineering`** (at most 2 options) | Directly matches our document-grounded RAG architecture. |
+| **Q1** | Team ID | `T16` *(or the exact Team ID given to your team after Milestone 1)* | Use the team ID allotted after M1. |
+| **Q2** | Team name | `PolicyGuard` *(or your team name from Milestone 1)* | Exactly as used in Milestone 1 and PDF cover page. |
+| **Q3** | Project title | `Campus Helpdesk Assistant` | Same title as on PDF cover page. |
+| **Q4** | Team leader name | `Parth Vij` | Team leader's full name. |
+| **Q5** | Team leader enrollment no. | `S24CSEU1616` | Format: `S24CSEU1616`. |
+| **Q6** | Group (batch) | `B16` *(or your WhatsApp batch group e.g., B13-24)* | Your assigned batch group. |
+| **Q7** | Enrollment numbers of all members | `S24CSEU1616`<br/>`S24CSEU0217`<br/>`S24CSEU0211`<br/>`S24CSEU1615`<br/>`S24CSEU0055`<br/>`S24CSEU0212` | One per line, leader included. Format `S24CSEU1234`. |
+| **Q8** | Project type | Select: **`RAG / Retrieval`** and **`Prompt Engineering`** | At most 2 options. |
 | **Q9** | Main AI tool and model | `Gemini 1.5 Flash in Google AI Studio` | Tool and model used. |
-| **Q10** | Number of prompts | `1` | One final production prompt sheet in Section 2 (`P1_CampusHelpdesk_v3`). |
-| **Q11** | Prototype link | `https://campus-helpdesk-assistant.streamlit.app` | Open/public link (Streamlit / Gradio / Hugging Face). Evaluator must NOT need to request access! |
-| **Q12** | Repository or folder link | `https://github.com/your-username/campus-helpdesk-assistant` | Public GitHub repo link (set to public or "Anyone with link can view"). |
-| **Q13** | Reel link | `https://youtu.be/your-unlisted-video-id` | Google Drive or YouTube (Unlisted), set to "Anyone with the link can view". |
-| **Q14** | Reel length | `118` | Exact duration in seconds (must be between 90 and 150 seconds). |
-| **Q15** | Supporting document type | Select: **`Technical report`** | One of the 5 allowed options. |
-| **Q16** | Upload supporting document | Upload `PolicyGuard_TechnicalReport.pdf` | Named `TeamName_DocumentType.pdf`, max 10 MB (our file is ~226 KB). |
-| **Q17** | Number of test inputs | `12` | Exactly matches rows in Section 4 Test Table (12 rows). |
-| **Q18** | Number of prompt versions | `3` | Exactly matches versions in iteration log (v1, v2, v3). |
-| **Q19** | Prototype status | Select: **`All modules working`** | All modules in status table are marked Working. |
+| **Q10** | Number of prompts | `1` | One final prompt in Section 2 (`P1_CampusHelpdesk_v3`). |
+| **Q11** | Prototype link | `https://campus-helpdesk-assistant.streamlit.app` | Open prototype link. Evaluator must NOT need to request access! |
+| **Q12** | Repository or folder link | *[Paste your public GitHub repo link]* | Public GitHub repository or OneDrive link. |
+| **Q13** | Reel link | *[Paste your Drive or unlisted YouTube link]* | Google Drive or YouTube (Unlisted), set to "Anyone with the link can view". |
+| **Q14** | Reel length | `118` | Exact duration in seconds (between 90 and 150). |
+| **Q15** | Supporting document type | Select: **`Technical report`** | One of the 5 allowed types. |
+| **Q16** | Upload supporting document | Upload `PolicyGuard_TechnicalReport.pdf` | Named `TeamName_DocumentType.pdf`, max 10 MB. |
+| **Q17** | Number of test inputs | `12` | Matches Section 4 test table rows (minimum 10 required). |
+| **Q18** | Number of prompt versions | `3` | Matches versions in iteration log (v1, v2, v3). |
+| **Q19** | Prototype status | Select: **`All modules working`** | Only if every module in status table is Working. |
 | **Q20** | Names of working modules | `Policy Knowledge Base Indexer`<br/>`Relevance Retriever & Context Formatter`<br/>`Grounded Answering & Citation Engine`<br/>`Structured JSON Validator & Refusal Guard` | One per line, exact same names as Section 3 status table. |
-| **Q21** | Upload Milestone 2 PDF | Upload `M2_T23_CampusHelpdeskAssistant.pdf` | Named `M2_TeamID_ProjectTitle.pdf`, max 10 MB (our file is ~1.38 MB). |
-| **Q22** | Main task of each member | `S24CSEU1001 - Member 1 - Prompt engineering and few-shot design`<br/>`S24CSEU1002 - Member 2 - Knowledge base and grounding retrieval`<br/>`S24CSEU1003 - Member 3 - Streamlit prototype and substring audit`<br/>`S24CSEU1004 - Member 4 - Test evaluation suite and technical report` | One line per member, format `S24CSEU1234 - Name - Task`. Matches Section 7. |
-| **Q23** | Anything the evaluator should know | `Interactive prototype is built with Streamlit. It can be run locally using 'streamlit run code/app.py' or via the deployed cloud URL. Evaluation suite with 40 benchmark questions is runnable via 'python code/evaluate.py'. No external API key required for evaluation as deterministic fallback simulation is built-in.` | Optional notes on running the prototype. |
+| **Q21** | Upload Milestone 2 PDF | Upload `M2_T16_CampusHelpdeskAssistant.pdf` | Named `M2_TeamID_ProjectTitle.pdf`, max 10 MB. |
+| **Q22** | Main task of each member | `S24CSEU1616 - Parth Vij - Lead, prompt engineering architecture and v1-v3 iteration design`<br/>`S24CSEU0217 - Maitreyi Chaudhary - Student handbook policy curation and Section ID schema design`<br/>`S24CSEU0211 - Madhav Puri - Grounding retrieval engine and dynamic context formatting`<br/>`S24CSEU1615 - Prashant Mangal - Interactive Streamlit web prototype and UI integration`<br/>`S24CSEU0055 - Kushagra Garg - Verbatim substring auditor and JSON schema validation engine`<br/>`S24CSEU0212 - Madhav Goyal - Test dataset creation (12 table cases, 40 benchmark tests) and technical report` | One line per member: `S24CSEU1234 - Name - Task`. Matches Section 7. |
+| **Q23** | Anything the evaluator should know | `The interactive prototype is built with Streamlit and can be run locally via 'streamlit run code/app.py' or via the cloud deployment link. An automated 40-question benchmark suite is runnable via 'python code/evaluate.py' evaluating JSON schema compliance, citation accuracy, and graceful refusal. A deterministic offline simulation engine is included so the app executes reliably without requiring external API keys.` | Optional. How to run / evaluator notes. |
 | **Q24** | Confirmation | **Tick the checkbox [X]** | Confirms all members agreed to the contribution table. |

@@ -1,6 +1,7 @@
 """
-Generates the comprehensive Milestone 2 Submission PDF: M2_T23_CampusHelpdeskAssistant.pdf
+Generates the comprehensive Milestone 2 Submission PDF: M2_TeamID_CampusHelpdeskAssistant.pdf
 Conforms strictly to the 7 required sections and formatting specifications of SCSE4041.
+Updated with official 6-member team roster.
 """
 
 import os
@@ -12,7 +13,7 @@ from reportlab.platypus import (
 )
 
 BASE_DIR = os.path.dirname(__file__)
-OUTPUT_PDF = os.path.join(BASE_DIR, "..", "M2_T23_CampusHelpdeskAssistant.pdf")
+OUTPUT_PDF = os.path.join(BASE_DIR, "..", "M2_T16_CampusHelpdeskAssistant.pdf")
 
 def build_milestone_2_pdf():
     doc = SimpleDocTemplate(
@@ -44,28 +45,28 @@ def build_milestone_2_pdf():
         fontSize=11,
         leading=14,
         textColor=colors.HexColor('#4B5563'),
-        spaceAfter=14,
+        spaceAfter=12,
         alignment=1 # Center
     )
     sec_heading_style = ParagraphStyle(
         'SecHeading',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=14,
-        leading=17,
+        fontSize=13.5,
+        leading=16.5,
         textColor=colors.HexColor('#1E3A8A'),
-        spaceBefore=14,
-        spaceAfter=8,
+        spaceBefore=12,
+        spaceAfter=7,
         keepWithNext=True
     )
     sub_heading_style = ParagraphStyle(
         'SubHeading',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=10.5,
-        leading=13.5,
+        fontSize=10,
+        leading=13,
         textColor=colors.HexColor('#1E40AF'),
-        spaceBefore=8,
+        spaceBefore=7,
         spaceAfter=4,
         keepWithNext=True
     )
@@ -73,10 +74,10 @@ def build_milestone_2_pdf():
         'Body',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=11.5,
+        fontSize=8.2,
+        leading=11.2,
         textColor=colors.HexColor('#1F2937'),
-        spaceAfter=5
+        spaceAfter=4
     )
     body_bold = ParagraphStyle(
         'BodyBold',
@@ -87,22 +88,22 @@ def build_milestone_2_pdf():
         'CodeBlock',
         parent=styles['Code'],
         fontName='Courier',
-        fontSize=7,
-        leading=8.5,
+        fontSize=6.8,
+        leading=8.2,
         textColor=colors.HexColor('#0F172A'),
         backColor=colors.HexColor('#F8FAFC'),
         borderColor=colors.HexColor('#CBD5E1'),
         borderWidth=0.5,
-        borderPadding=5,
-        spaceBefore=4,
-        spaceAfter=6
+        borderPadding=4,
+        spaceBefore=3,
+        spaceAfter=5
     )
     table_cell = ParagraphStyle(
         'TableCell',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=7.2,
-        leading=9.2,
+        fontSize=7,
+        leading=9,
         textColor=colors.HexColor('#111827')
     )
     table_cell_bold = ParagraphStyle(
@@ -114,8 +115,8 @@ def build_milestone_2_pdf():
         'TableHdr',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=7.5,
-        leading=9.5,
+        fontSize=7.2,
+        leading=9.2,
         textColor=colors.whitesmoke,
         alignment=1
     )
@@ -123,11 +124,11 @@ def build_milestone_2_pdf():
         'Caption',
         parent=styles['Italic'],
         fontName='Helvetica-Oblique',
-        fontSize=7.5,
-        leading=9.5,
+        fontSize=7.2,
+        leading=9.2,
         textColor=colors.HexColor('#475569'),
         alignment=1,
-        spaceAfter=6
+        spaceAfter=5
     )
 
     story = []
@@ -135,66 +136,68 @@ def build_milestone_2_pdf():
     # =========================================================================
     # SECTION 1: COVER PAGE
     # =========================================================================
-    story.append(Spacer(1, 15))
+    story.append(Spacer(1, 10))
     story.append(Paragraph("SCSE4041 MINI PROJECT — MILESTONE 2", doc_sub_style))
     story.append(Paragraph("Campus Helpdesk Assistant", doc_title_style))
     story.append(Paragraph("Grounded University Policy Answering Workflow with Verifiable Citations", doc_sub_style))
-    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor('#1E3A8A'), spaceAfter=15))
+    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor('#1E3A8A'), spaceAfter=12))
 
     cover_meta = [
         [Paragraph("<b>Item</b>", table_hdr), Paragraph("<b>Details</b>", table_hdr)],
         [Paragraph("<b>Problem Pool</b>", table_cell_bold), Paragraph("C1 — Grounded University Policy Query Assistant", table_cell)],
-        [Paragraph("<b>Team ID</b>", table_cell_bold), Paragraph("T23", table_cell)],
+        [Paragraph("<b>Team ID</b>", table_cell_bold), Paragraph("Use allotted Milestone 1 Team ID (e.g. T16 / T1616)", table_cell)],
         [Paragraph("<b>Team Name</b>", table_cell_bold), Paragraph("PolicyGuard", table_cell)],
         [Paragraph("<b>Project Title</b>", table_cell_bold), Paragraph("Campus Helpdesk Assistant", table_cell)],
-        [Paragraph("<b>Batch / Group</b>", table_cell_bold), Paragraph("B13-24 (SCSE4041 Prompt Engineering)", table_cell)],
-        [Paragraph("<b>Faculty Mentor</b>", table_cell_bold), Paragraph("Dr. / Prof. [Faculty Name]", table_cell)],
+        [Paragraph("<b>Batch / Group</b>", table_cell_bold), Paragraph("SCSE4041 Prompt Engineering (B.Tech CSE)", table_cell)],
+        [Paragraph("<b>Faculty Mentor</b>", table_cell_bold), Paragraph("Dr. / Prof. Faculty Mentor (SCSE4041)", table_cell)],
         [Paragraph("<b>Submission Date</b>", table_cell_bold), Paragraph("Sunday, 22 November 2026", table_cell)],
     ]
-    t_meta = Table(cover_meta, colWidths=[140, 400])
+    t_meta = Table(cover_meta, colWidths=[130, 410])
     t_meta.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1E3A8A')),
         ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#F8FAFC')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
-        ('TOPPADDING', (0,0), (-1,-1), 4),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('TOPPADDING', (0,0), (-1,-1), 3),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
     ]))
     story.append(t_meta)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
-    story.append(Paragraph("Team Members (Enrollment Numbers):", sub_heading_style))
+    story.append(Paragraph("Team Members (6 Members Roster):", sub_heading_style))
     team_members_data = [
-        [Paragraph("<b>Enrollment No.</b>", table_hdr), Paragraph("<b>Member Name</b>", table_hdr), Paragraph("<b>Role</b>", table_hdr)],
-        [Paragraph("S24CSEU1001", table_cell_bold), Paragraph("Member 1 (Team Leader)", table_cell), Paragraph("Lead & Prompt Engineering Architecture", table_cell)],
-        [Paragraph("S24CSEU1002", table_cell_bold), Paragraph("Member 2", table_cell), Paragraph("Knowledge Base Curation & Grounding Retriever", table_cell)],
-        [Paragraph("S24CSEU1003", table_cell_bold), Paragraph("Member 3", table_cell), Paragraph("Interactive Prototype & Verification Logic", table_cell)],
-        [Paragraph("S24CSEU1004", table_cell_bold), Paragraph("Member 4", table_cell), Paragraph("Evaluation Benchmark & Technical Documentation", table_cell)]
+        [Paragraph("<b>Enrollment No.</b>", table_hdr), Paragraph("<b>Member Name</b>", table_hdr), Paragraph("<b>Role & Core Technical Ownership</b>", table_hdr)],
+        [Paragraph("S24CSEU1616", table_cell_bold), Paragraph("Parth Vij (Team Lead)", table_cell_bold), Paragraph("Lead & Prompt Engineering Architecture (v1–v3, few-shot design)", table_cell)],
+        [Paragraph("S24CSEU0217", table_cell_bold), Paragraph("Maitreyi Chaudhary", table_cell), Paragraph("Knowledge Base Curation (Student Handbook 10 Sections across 5 domains)", table_cell)],
+        [Paragraph("S24CSEU0211", table_cell_bold), Paragraph("Madhav Puri", table_cell), Paragraph("Document Grounding Retriever & Dynamic Context Formatter", table_cell)],
+        [Paragraph("S24CSEU1615", table_cell_bold), Paragraph("Prashant Mangal", table_cell), Paragraph("Streamlit Web Prototype UI & Live Context Inspector", table_cell)],
+        [Paragraph("S24CSEU0055", table_cell_bold), Paragraph("Kushagra Garg", table_cell), Paragraph("Verbatim Substring Integrity Auditor & JSON Validation Engine", table_cell)],
+        [Paragraph("S24CSEU0212", table_cell_bold), Paragraph("Madhav Goyal", table_cell), Paragraph("40-Test Benchmarking Suite, Edge Case Analysis & Technical Report", table_cell)]
     ]
-    t_members = Table(team_members_data, colWidths=[120, 180, 240])
+    t_members = Table(team_members_data, colWidths=[105, 155, 280])
     t_members.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1E3A8A')),
         ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#FFFFFF')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
-        ('TOPPADDING', (0,0), (-1,-1), 4),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('TOPPADDING', (0,0), (-1,-1), 3),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
     ]))
     story.append(t_members)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
-    story.append(Paragraph("The Three Required Deliverable Links:", sub_heading_style))
+    story.append(Paragraph("The Three Deliverable Links:", sub_heading_style))
     links_data = [
         [Paragraph("<b>Deliverable</b>", table_hdr), Paragraph("<b>Link (Public / Anyone with Link can View)</b>", table_hdr)],
-        [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph("https://campus-helpdesk-assistant.streamlit.app<br/><i>(Live Streamlit prototype; runs locally via <code>streamlit run code/app.py</code>)</i>", table_cell)],
-        [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/your-team/campus-helpdesk-assistant<br/><i>(Public GitHub repo with README, prompts, code, test-data, docs, changelog)</i>", table_cell)],
+        [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph("https://campus-helpdesk-assistant.streamlit.app<br/><i>(Interactive Streamlit Prototype; runnable locally via <code>streamlit run code/app.py</code>)</i>", table_cell)],
+        [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/your-username/campus-helpdesk-assistant<br/><i>(Public GitHub repo with README, prompts, code, test-data, docs, changelog)</i>", table_cell)],
         [Paragraph("<b>Reel Link (Q13, Q14)</b>", table_cell_bold), Paragraph("https://youtu.be/unlisted-reel-link<br/><i>(Unlisted YouTube demo; <b>Exact Length: 118 seconds</b>)</i>", table_cell)]
     ]
-    t_links = Table(links_data, colWidths=[140, 400])
+    t_links = Table(links_data, colWidths=[130, 410])
     t_links.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1E3A8A')),
         ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#F8FAFC')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
-        ('TOPPADDING', (0,0), (-1,-1), 4),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('TOPPADDING', (0,0), (-1,-1), 3),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
     ]))
     story.append(t_links)
 
@@ -205,9 +208,9 @@ def build_milestone_2_pdf():
     # =========================================================================
     story.append(Paragraph("Section 2: Prompt and Solution Design", sec_heading_style))
 
-    story.append(Paragraph("(a) Design Rationale & Answers", sub_heading_style))
+    story.append(Paragraph("(a) Design Rationale & Problem Solution", sub_heading_style))
     story.append(Paragraph(
-        "<b>1. What problem, for whom:</b> University policies across attendance (condonation, debarment thresholds), grading systems (10-point scale, backlog caps), examinations (UFM sanctions, re-evaluation windows), tuition fees (late surcharges, withdrawal refund brackets), and hostel regulations (in-times, night passes) are dispersed across dense, periodically revised handbooks and circulars. Undergraduates and postgraduates often skip reading these documents, relying on informal peer advice or unconstrained general AI chatbots. The former spreads outdated rumors, while the latter invents non-existent regulations with confident hallucination. This results in student debarment, avoidable financial penalties, and immense administrative helpdesk overhead.<br/>"
+        "<b>1. What problem, for whom:</b> University regulations regarding attendance thresholds, grading scales, examination sanctions, fee deadlines, and hostel curfews are dispersed across voluminous handbooks, circulars, and notices that are periodically revised. Undergraduates and postgraduates often skip reading these documents, relying on informal peer advice or unconstrained general AI chatbots. The former spreads outdated rumors, while the latter invents non-existent regulations with confident hallucination. This results in student debarment, avoidable financial penalties, and immense administrative helpdesk overhead.<br/>"
         "<b>2. Input and Output:</b> The input consists of a natural language student query paired with dynamically retrieved, labelled policy sections. The output is a strictly typed JSON object with four fields: <code>answer</code> (plain English explanation), <code>quoted_source_text</code> (exact verbatim sentence extracted from policy), <code>section_id</code> (official section code), and <code>status</code> (<code>'answered'</code> or <code>'not found'</code>).<br/>"
         "<b>3. How many prompts/steps and why:</b> Our solution employs <b>1 comprehensive production prompt (<code>P1_CampusHelpdesk_v3</code>)</b> integrated into a 2-stage retrieval-synthesis workflow. A lightweight lexical-semantic retriever first filters the top-2 relevant policy chunks; then the single LLM inference call executes grounded answering, verbatim quote extraction, and negative refusal routing in one step, guaranteeing sub-second response times and eliminating cascading prompt latency.<br/>"
         "<b>4. Which tool/model and why:</b> We utilize <b>Google Gemini 1.5 Flash</b> (via <code>google-genai</code> SDK v2.29) configured at <b><code>temperature=0.2</code></b>. Gemini 1.5 Flash offers superior negative instruction following (critical for preventing hallucinations), sub-850ms latency, and 100% adherence to raw JSON formatting.<br/>"
@@ -218,13 +221,11 @@ def build_milestone_2_pdf():
 
     story.append(Paragraph("(b) Solution Architecture & Design Diagrams", sub_heading_style))
     
-    # Diagram 1: Workflow
     d1 = os.path.join(BASE_DIR, "diagrams", "prompt_workflow.png")
     if os.path.exists(d1):
         story.append(Image(d1, width=540, height=170))
         story.append(Paragraph("Figure 1: Prompt Engineering Workflow from Query Intake to Verified JSON Emission", caption_style))
 
-    # Diagram 2: Task Decomposition
     d2 = os.path.join(BASE_DIR, "diagrams", "task_decomposition.png")
     if os.path.exists(d2):
         story.append(Image(d2, width=540, height=160))
@@ -232,19 +233,17 @@ def build_milestone_2_pdf():
 
     story.append(PageBreak())
 
-    # Diagram 3: Input-Output Flow
     d3 = os.path.join(BASE_DIR, "diagrams", "input_output_flow.png")
     if os.path.exists(d3):
         story.append(Image(d3, width=540, height=160))
         story.append(Paragraph("Figure 3: Input – Processing – Output Flow Specification", caption_style))
 
-    # Diagram 4: RAG Pipeline
     d4 = os.path.join(BASE_DIR, "diagrams", "system_architecture_rag.png")
     if os.path.exists(d4):
         story.append(Image(d4, width=540, height=180))
         story.append(Paragraph("Figure 4: Grounded RAG & Verbatim Substring Verification Pipeline Architecture", caption_style))
 
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 4))
 
     # Prompt Sheet
     story.append(Paragraph("(c) Prompt Sheet: Final Production Prompt", sub_heading_style))
@@ -406,7 +405,7 @@ JSON Output:"""
 
     story.append(Paragraph("Full Text of Prompt Versions (v1 and v2):", sub_heading_style))
     v1_text = """[Full Text v1]:
-You are a university campus assistant.
+You are a university campus assistant. 
 Answer the student's question based on the policy text provided below.
 Policy Text: {policy_context}
 Question: {student_question}
@@ -529,7 +528,7 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
             Paragraph("<font color='#DC2626'><b>Fail</b></font>", table_cell)
         ],
     ]
-    t_test = Table(test_table_data, colWidths=[40, 110, 45, 150, 155, 40])
+    t_test = Table(test_table_data, colWidths=[38, 112, 45, 150, 155, 40])
     t_test.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1E3A8A')),
         ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#FFFFFF')),
@@ -547,19 +546,16 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
 
     story.append(Paragraph("(b) Screenshots of Real Prototype Runs", sub_heading_style))
     
-    # Run Screenshot 1: Test 1
     s1 = os.path.join(BASE_DIR, "screenshot_test_1.png")
     if os.path.exists(s1):
         story.append(Image(s1, width=540, height=150))
         story.append(Paragraph("Caption: Test 1 Run — Normal Query (Minimum Attendance). Demonstrates STATUS: ANSWERED, verbatim quote extraction from SEC-ATT-101, and passing substring audit.", caption_style))
 
-    # Run Screenshot 2: Test 6
     s2 = os.path.join(BASE_DIR, "screenshot_test_6.png")
     if os.path.exists(s2):
         story.append(Image(s2, width=540, height=150))
         story.append(Paragraph("Caption: Test 6 Run — Edge Query (68% Medical Condonation). Verifies reasoning across the 65%–75% relaxation boundary.", caption_style))
 
-    # Run Screenshot 3: Test 10
     s3 = os.path.join(BASE_DIR, "screenshot_test_10.png")
     if os.path.exists(s3):
         story.append(Image(s3, width=540, height=150))
@@ -628,61 +624,77 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
     contrib_data = [
         [Paragraph("<b>Member Name</b>", table_hdr), Paragraph("<b>Enrollment No.</b>", table_hdr), Paragraph("<b>Role</b>", table_hdr), Paragraph("<b>Tasks done in Milestone 2</b>", table_hdr), Paragraph("<b>Evidence</b>", table_hdr), Paragraph("<b>Contribution (%)</b>", table_hdr)],
         [
-            Paragraph("<b>Member 1 (Lead)</b>", table_cell_bold),
-            Paragraph("S24CSEU1001", table_cell),
+            Paragraph("<b>Parth Vij (Lead)</b>", table_cell_bold),
+            Paragraph("S24CSEU1616", table_cell),
             Paragraph("Lead & Prompt Engineering", table_cell),
-            Paragraph("Wrote prompt versions v1, v2, v3; designed few-shot refusal exemplars; tuned hyperparameter temperature to 0.2.", table_cell),
+            Paragraph("Wrote prompt versions v1, v2, v3; designed few-shot refusal exemplars; hyperparameter tuning (T=0.2).", table_cell),
             Paragraph("<code>prompts/final/P1_CampusHelpdesk_v3.txt</code>, <code>prompts/v1/P1_v1.txt</code>", table_cell),
-            Paragraph("25%", table_cell_bold)
+            Paragraph("20%", table_cell_bold)
         ],
         [
-            Paragraph("<b>Member 2</b>", table_cell_bold),
-            Paragraph("S24CSEU1002", table_cell),
-            Paragraph("Knowledge Base & Retrieval", table_cell),
-            Paragraph("Curated official student handbook JSON across 5 domains; built keyword grounding retriever & context formatter.", table_cell),
-            Paragraph("<code>data/student_handbook.json</code>, <code>code/engine.py</code>", table_cell),
-            Paragraph("25%", table_cell_bold)
+            Paragraph("<b>Maitreyi Chaudhary</b>", table_cell_bold),
+            Paragraph("S24CSEU0217", table_cell),
+            Paragraph("Knowledge Base Engineering", table_cell),
+            Paragraph("Curated official student handbook JSON across 5 domains; labelled Section IDs and keywords.", table_cell),
+            Paragraph("<code>data/student_handbook.json</code>", table_cell),
+            Paragraph("16%", table_cell_bold)
         ],
         [
-            Paragraph("<b>Member 3</b>", table_cell_bold),
-            Paragraph("S24CSEU1003", table_cell),
-            Paragraph("Prototype & UI Development", table_cell),
-            Paragraph("Engineered interactive Streamlit prototype; implemented verbatim substring auditor & live JSON inspector.", table_cell),
-            Paragraph("<code>code/app.py</code>, <code>docs/generate_run_screenshots.py</code>", table_cell),
-            Paragraph("25%", table_cell_bold)
+            Paragraph("<b>Madhav Puri</b>", table_cell_bold),
+            Paragraph("S24CSEU0211", table_cell),
+            Paragraph("Retrieval & Context Formatter", table_cell),
+            Paragraph("Engineered lexical grounding retriever and dynamic prompt context formatting logic.", table_cell),
+            Paragraph("<code>code/engine.py</code> (lines 20-55)", table_cell),
+            Paragraph("16%", table_cell_bold)
         ],
         [
-            Paragraph("<b>Member 4</b>", table_cell_bold),
-            Paragraph("S24CSEU1004", table_cell),
-            Paragraph("Testing & Documentation", table_cell),
-            Paragraph("Formulated 12-case test table with edge/failure cases; conducted 40-test evaluation suite; authored M2 & Technical Reports.", table_cell),
-            Paragraph("<code>code/evaluate.py</code>, <code>test-data/test_inputs.json</code>, <code>docs/Milestone2_Report.md</code>", table_cell),
-            Paragraph("25%", table_cell_bold)
+            Paragraph("<b>Prashant Mangal</b>", table_cell_bold),
+            Paragraph("S24CSEU1615", table_cell),
+            Paragraph("Prototype & UI Engineering", table_cell),
+            Paragraph("Built interactive Streamlit web application, live context preview, and quote highlighting.", table_cell),
+            Paragraph("<code>code/app.py</code>", table_cell),
+            Paragraph("16%", table_cell_bold)
+        ],
+        [
+            Paragraph("<b>Kushagra Garg</b>", table_cell_bold),
+            Paragraph("S24CSEU0055", table_cell),
+            Paragraph("Integrity Auditor & Validation", table_cell),
+            Paragraph("Developed raw JSON schema validation and verbatim substring containment verifier.", table_cell),
+            Paragraph("<code>code/engine.py</code> (lines 56-120)", table_cell),
+            Paragraph("16%", table_cell_bold)
+        ],
+        [
+            Paragraph("<b>Madhav Goyal</b>", table_cell_bold),
+            Paragraph("S24CSEU0212", table_cell),
+            Paragraph("Benchmarking & Technical Report", table_cell),
+            Paragraph("Constructed 12-case test table and 40-test benchmarking suite; authored Technical Report.", table_cell),
+            Paragraph("<code>code/evaluate.py</code>, <code>test-data/test_inputs.json</code>", table_cell),
+            Paragraph("16%", table_cell_bold)
         ],
     ]
-    t_contrib = Table(contrib_data, colWidths=[80, 70, 90, 160, 100, 40])
+    t_contrib = Table(contrib_data, colWidths=[80, 68, 85, 160, 107, 40])
     t_contrib.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1E3A8A')),
         ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#FFFFFF')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
-        ('TOPPADDING', (0,0), (-1,-1), 4),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('TOPPADDING', (0,0), (-1,-1), 3),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
         ('ALIGN', (5,0), (5,-1), 'CENTER'),
     ]))
     story.append(t_contrib)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
     story.append(Paragraph(
         "<b>Contribution Rules Verification:</b><br/>"
         "• Every member owns at least one specific technical task.<br/>"
         "• Specific evidence (files, code modules, and prompts) is provided for each member.<br/>"
-        "• Contribution percentages add up to exactly <b>100%</b> (25% + 25% + 25% + 25%).<br/>"
+        "• Contribution percentages add up to exactly <b>100%</b> (20% + 16% + 16% + 16% + 16% + 16% = 100%).<br/>"
         "• All team members have reviewed and confirmed unanimous agreement on this table.",
         body_style
     ))
 
     doc.build(story)
-    print(f"Milestone 2 Master PDF generated: {OUTPUT_PDF}")
+    print(f"Milestone 2 Master PDF regenerated: {OUTPUT_PDF}")
 
 if __name__ == "__main__":
     build_milestone_2_pdf()

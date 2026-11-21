@@ -16,26 +16,27 @@ The **Campus Helpdesk Assistant** is a prompt engineering workflow grounded stri
 
 ---
 
-## 👥 Team Information
-- **Team ID:** `T23` *(Placeholder: Replace with your allotted Milestone 1 Team ID)*
-- **Team Name:** `PolicyGuard` *(Placeholder: Replace with your team name)*
+## 👥 Team Information (6 Members)
+- **Team ID:** `T16` *(Milestone 1 Assigned Team ID)*
+- **Team Name:** `PolicyGuard`
 - **Project Title:** `Campus Helpdesk Assistant`
-- **Batch / Group:** `B13-24` *(Placeholder: Replace with your WhatsApp batch)*
-- **Course:** SCSE4041 - Prompt Engineering
+- **Course & Batch:** SCSE4041 - Prompt Engineering | B.Tech CSE
 
 | Enrollment Number | Member Name | Role | Primary Task (Milestone 2) | Contribution (%) |
 | :--- | :--- | :--- | :--- | :--- |
-| `S24CSEU1001` | Member 1 (Lead) | Lead & Prompt Architecture | Designed v1-v3 prompts, few-shot refusal guards | 25% |
-| `S24CSEU1002` | Member 2 | Grounding & KB Engineering | Formatted student handbook, keyword indexing | 25% |
-| `S24CSEU1003` | Member 3 | Prototype Development | Built interactive Streamlit app, verification logic | 25% |
-| `S24CSEU1004` | Member 4 | Evaluation & Documentation | Ran 40-test benchmark, generated M2 & Tech PDFs | 25% |
+| `S24CSEU1616` | **Parth Vij** (Lead) | Lead & Prompt Architecture | Designed v1–v3 prompts, few-shot refusal guards, hyperparameter tuning | **20%** |
+| `S24CSEU0217` | **Maitreyi Chaudhary** | Knowledge Base Engineering | Curated student handbook (10 sections across 5 domains), Section ID schema | **16%** |
+| `S24CSEU0211` | **Madhav Puri** | Retrieval & Grounding | Built lexical grounding retriever and dynamic context formatter | **16%** |
+| `S24CSEU1615` | **Prashant Mangal** | Prototype & UI Engineering | Built interactive Streamlit application and live context preview | **16%** |
+| `S24CSEU0055` | **Kushagra Garg** | Integrity & Schema Auditor | Developed raw JSON validator and verbatim substring containment verifier | **16%** |
+| `S24CSEU0212` | **Madhav Goyal** | Benchmarking & Technical Report | Formulated 12-case test table & 40-test suite; authored Technical Report | **16%** |
 
-*(Note: Replace enrollment numbers, names, and exact role allocations in Section 7 before final submission).*
+**Total Contribution:** 100% (All members unanimously agreed to this allocation).
 
 ---
 
 ## 🔗 Important Links
-- **Prototype Link:** [Streamlit App Live Demo / Local Run Instructions](#how-to-run-locally) *(Deployable to Streamlit Community Cloud / HuggingFace Spaces with 1 click)*
+- **Prototype Link:** [Streamlit App Live Demo / Local Run Instructions](#how-to-run-locally)
 - **GitHub Repository:** Public GitHub Repository URL *(Replace with your repository URL)*
 - **Reel Link (90–150s):** Drive / Unlisted YouTube Video Link *(Exact length in seconds: 118s)*
 
@@ -44,7 +45,7 @@ The **Campus Helpdesk Assistant** is a prompt engineering workflow grounded stri
 ## 📂 Project Directory Structure
 
 ```text
-d:\bennett\prompt\project\
+project/
 ├── README.md                      # Project description, instructions, team data, links
 ├── CHANGELOG.md                   # Chronological development log since Milestone 1
 ├── prompts/
@@ -89,24 +90,13 @@ Ensure Python 3.10+ is installed on your system.
 pip install -r code/requirements.txt
 ```
 
-### 3. (Optional) Configure Gemini API Key
-To run with live Gemini 1.5 Flash:
-```bash
-# Windows PowerShell:
-$env:GEMINI_API_KEY="your-google-ai-studio-api-key"
-
-# Linux / Mac:
-export GEMINI_API_KEY="your-google-ai-studio-api-key"
-```
-*Note: If no API key is provided, the system seamlessly uses the built-in deterministic simulation engine that mirrors prompt behavior across v1, v2, and v3.*
-
-### 4. Launch Interactive Web Prototype
+### 3. Launch Interactive Web Prototype
 ```bash
 streamlit run code/app.py
 ```
 Open your browser at `http://localhost:8501`.
 
-### 5. Run Automated Evaluation Suite
+### 4. Run Automated Evaluation Suite
 ```bash
 python code/evaluate.py
 ```
