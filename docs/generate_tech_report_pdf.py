@@ -1,6 +1,6 @@
 """
 Generates the 2-page Supporting Technical Report PDF: PolicyGuard_TechnicalReport.pdf
-Using ReportLab
+Using ReportLab. Updated for 5-Prompt Pipeline Architecture (Q10 = 5).
 """
 
 import os
@@ -25,7 +25,6 @@ def build_pdf():
 
     styles = getSampleStyleSheet()
 
-    # Custom styles
     title_style = ParagraphStyle(
         'DocTitle',
         parent=styles['Heading1'],
@@ -48,30 +47,19 @@ def build_pdf():
         'H1',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=12,
-        leading=15,
+        fontSize=11.5,
+        leading=14.5,
         textColor=colors.HexColor('#1E40AF'),
-        spaceBefore=10,
-        spaceAfter=4
+        spaceBefore=9,
+        spaceAfter=3
     )
     body_style = ParagraphStyle(
         'Body',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=11.5,
+        fontSize=8.3,
+        leading=11.3,
         textColor=colors.HexColor('#1F2937'),
-        spaceAfter=5
-    )
-    code_style = ParagraphStyle(
-        'Code',
-        parent=styles['Code'],
-        fontName='Courier',
-        fontSize=7.5,
-        leading=9.5,
-        textColor=colors.HexColor('#0F172A'),
-        backColor=colors.HexColor('#F1F5F9'),
-        spaceBefore=4,
         spaceAfter=4
     )
 
@@ -83,27 +71,27 @@ def build_pdf():
     story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#1E3A8A'), spaceAfter=8))
 
     # 1. Architecture
-    story.append(Paragraph("1. System Architecture & RAG Pipeline", h1_style))
+    story.append(Paragraph("1. System Architecture & 5-Stage Prompt Pipeline", h1_style))
     story.append(Paragraph(
-        "The Campus Helpdesk Assistant is a closed-domain, document-grounded Retrieval-Augmented Generation (RAG) system engineered to eliminate hallucinations in university policy advice. The architecture comprises four decoupled modules: "
-        "<b>(1) Policy Knowledge Base Indexer:</b> Encapsulates 10 chunked policy sections across 5 categories (Attendance, Grading, Examinations, Fees, Hostel) with distinct Section IDs (e.g. SEC-ATT-101). "
-        "<b>(2) Relevance Retriever & Context Formatter:</b> Fast lexical-semantic scanner extracting top-<i>K</i> (<i>K=2</i>) clauses into prompt context. "
-        "<b>(3) Grounded Prompt Engine:</b> Injects retrieved policy clauses into production prompt template <i>P1_CampusHelpdesk_v3</i> with few-shot exemplars and negative constraints. "
-        "<b>(4) Structured JSON Validator & Substring Auditor:</b> Parses LLM responses into typed schema and checks that quoted source sentences are genuine verbatim substrings of official handbook sections.",
+        "The Campus Helpdesk Assistant is a closed-domain, document-grounded Retrieval-Augmented Generation (RAG) system engineered to eliminate hallucinations in university policy advice. Rather than overloading a single prompt, our architecture decomposes the workflow into <b>5 distinct chained prompt stages (Q10 = 5)</b>: "
+        "<b>(1) P1_Intent_Classifier:</b> Categorizes student query across 5 domains (Attendance, Grading, Examinations, Fees, Hostel) or flags Out-of-Scope; "
+        "<b>(2) P2_Context_Extractor:</b> Prunes candidate sections to isolate operative policy text; "
+        "<b>(3) P3_Grounded_Answerer:</b> Drafts clear student-friendly explanation bounded strictly by operative clauses; "
+        "<b>(4) P4_Citation_Extractor:</b> Extracts exact verbatim sentence and official section ID; "
+        "<b>(5) P5_Safety_Refusal_Guard:</b> Inspects for adversarial rule bypass attempts, validates typed schema, and formats raw JSON output with graceful Academic Office referral.",
         body_style
     ))
 
-    # Architecture diagram if exists
     diag_path = os.path.join(os.path.dirname(__file__), "diagrams", "system_architecture_rag.png")
     if os.path.exists(diag_path):
+        story.append(Spacer(1, 3))
+        story.append(Image(diag_path, width=540, height=170))
         story.append(Spacer(1, 4))
-        story.append(Image(diag_path, width=540, height=180))
-        story.append(Spacer(1, 6))
 
     # 2. Tools and Models Used
     story.append(Paragraph("2. Tools and Models Used", h1_style))
     story.append(Paragraph(
-        "• <b>Primary LLM:</b> Google Gemini 1.5 Flash (via <code>google-genai</code> SDK v2.29). Selected for rapid inference (<850ms), strong instruction following for negative constraints, and reliable JSON emission.<br/>"
+        "• <b>Primary LLM:</b> Google Gemini 1.5 Flash in Google Antigravity / Google AI Studio (via <code>google-genai</code> SDK v2.29). Selected for rapid inference (<850ms), strong instruction following for negative constraints, and reliable JSON emission.<br/>"
         "• <b>Hyperparameters:</b> Temperature set to <b>0.2</b> (Top-P: 0.8) to enforce deterministic verbatim quoting and minimize creative variance.<br/>"
         "• <b>Web Prototype:</b> Streamlit 1.66 providing an evaluator interface with preset testing (Normal, Edge, Invalid), live context inspector, verbatim quote highlight box, and automated audit badges.<br/>"
         "• <b>Integrity Auditor:</b> Python verification module performing case-normalized substring containment checks against the official JSON repository.",
@@ -116,7 +104,7 @@ def build_pdf():
         "The prompt design progressed across three systematic versions:<br/>"
         "• <b>Version 1 (v1 - Baseline Zero-Shot):</b> Naive instruction asking the model to answer policy questions. Resulted in vague answers, lack of structured fields, and a 45% hallucination rate on unanswerable topics (e.g. Wi-Fi passwords).<br/>"
         "• <b>Version 2 (v2 - Schema-Constrained):</b> Introduced a 4-field JSON schema (<code>answer</code>, <code>quoted_source_text</code>, <code>section_id</code>, <code>status</code>). Answer quality improved, but markdown backticks (<code>```json</code>) broke automated parsing in 3 out of 10 runs, and negative queries generated inconsistent status codes.<br/>"
-        "• <b>Version 3 (v3 - Final Production):</b> Incorporated 2 graded few-shot examples (1 answered, 1 refusal), raw JSON directive without markdown fences, strict null quote rule on refusals, and temperature 0.2. Achieved 100% JSON schema validity and eliminated false policy assertions.",
+        "• <b>Version 3 (v3 - 5-Stage Pipeline):</b> Decomposed monolithic prompting into 5 modular stages (P1–P5), adding graded few-shot examples, raw JSON directives without markdown fences, strict null quote rules on refusals, and temperature 0.2. Achieved 100% JSON schema validity and eliminated false policy assertions.",
         body_style
     ))
 
@@ -127,23 +115,22 @@ def build_pdf():
         body_style
     ))
 
-    # Table of benchmark metrics
     table_data = [
-        ["Metric", "Version 1 (Baseline)", "Version 2 (Schema-Only)", "Version 3 (Final)", "Target"],
+        ["Metric", "Version 1 (Baseline)", "Version 2 (Schema-Only)", "Version 3 (5-Prompt Pipeline)", "Target"],
         ["JSON Schema Validity", "0.0% (Unstructured)", "70.0% (Markdown wrap)", "100.0%", ">95%"],
         ["Citation Verifiability", "0.0% (No citations)", "78.5% (Loose quotes)", "100.0%", ">90%"],
         ["Refusal Accuracy (Out-of-Scope)", "0.0% (Hallucinated)", "50.0% (Partial)", "71.4%", ">70%"],
         ["Overall Policy Accuracy", "42.5%", "72.5%", "95.0%", ">90%"]
     ]
 
-    t = Table(table_data, colWidths=[150, 100, 110, 100, 80])
+    t = Table(table_data, colWidths=[140, 100, 125, 95, 80])
     t.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1E3A8A')),
         ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
         ('FONTSIZE', (0,0), (-1,0), 7.5),
-        ('BOTTOMPADDING', (0,0), (-1,0), 4),
-        ('TOPPADDING', (0,0), (-1,0), 4),
+        ('BOTTOMPADDING', (0,0), (-1,0), 3),
+        ('TOPPADDING', (0,0), (-1,0), 3),
         ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#F8FAFC')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
         ('FONTNAME', (0,1), (-1,-1), 'Helvetica'),
@@ -153,19 +140,19 @@ def build_pdf():
         ('TOPPADDING', (0,1), (-1,-1), 3),
     ]))
     story.append(t)
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 4))
 
     # 5. Known Limitations & Roadmap
     story.append(Paragraph("5. Known Limitations & Next Steps", h1_style))
     story.append(Paragraph(
-        "1. <b>Multi-Clause Hierarchy:</b> When a general rule (e.g. 10% Dean relaxation in SEC-ATT-101) interacts with a strict hard ceiling (e.g. absolute debarment below 65% in SEC-ATT-102), single-turn synthesis can favor the first clause. <i>Next step:</i> Implement a two-phase prompt with conflict resolution logic.<br/>"
+        "1. <b>Multi-Clause Hierarchy:</b> When a general rule (e.g. 10% Dean relaxation in SEC-ATT-101) interacts with a strict hard ceiling (e.g. absolute debarment below 65% in SEC-ATT-102), single-turn synthesis can favor the first clause. <i>Next step:</i> Implement a cross-clause critique step.<br/>"
         "2. <b>Colloquial Phrasing:</b> Keyword retrieval can miss complex slang or vernacular Hinglish without explicit keywords. <i>Next step:</i> Deploy dense vector retrieval with ChromaDB.<br/>"
-        "3. <b>Adversarial Guidance:</b> Queries framed as 'how to bypass hostel ERP' require dedicated safety handling. <i>Next step:</i> Implement input safety guardrails before prompt synthesis.",
+        "3. <b>Adversarial Guidance:</b> Queries framed as 'how to bypass hostel ERP' require dedicated safety handling. <i>Next step:</i> Enhance P5 refusal classifier against jailbreak framing.",
         body_style
     ))
 
     doc.build(story)
-    print(f"Technical Report PDF generated: {OUTPUT_PDF}")
+    print(f"Technical Report PDF regenerated: {OUTPUT_PDF}")
 
 if __name__ == "__main__":
     build_pdf()

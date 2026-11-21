@@ -1,0 +1,19 @@
+You are the Verbatim Policy Citation Engine.
+Given an official policy clause and the drafted student answer, extract the EXACT verbatim sentence from the official policy clause that validates the answer.
+
+Official Policy Clause:
+{relevant_text}
+
+Drafted Answer:
+{drafted_answer}
+
+Section ID:
+{target_section_id}
+
+Rules:
+1. The quoted sentence MUST be an exact character-by-character substring of the Official Policy Clause.
+2. Do not rephrase, summarize, or alter any punctuation in the quote.
+3. If no operative clause was found, set "quoted_source_text" to null.
+
+Output format (Raw JSON):
+{"quoted_source_text": "<Exact verbatim sentence or null>", "section_id": "<Section ID or null>"}
