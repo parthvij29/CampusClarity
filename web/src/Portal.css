@@ -1,0 +1,60 @@
+.portal-page { padding-top: 28px; }
+.portal-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 340px;
+  padding: clamp(24px, 5vw, 60px);
+  border-radius: 22px;
+  color: #fffdf2;
+  background: radial-gradient(ellipse at 87% 14%, #40755e 0, transparent 56%), #173d32;
+}
+.portal-eyebrow { color: #d8ebd5; font-weight: 700; font-size: 14px; }
+.portal-hero h1, .tools-header h1 { font: 400 clamp(39px, 6vw, 76px)/1.04 Georgia, serif; letter-spacing: -.055em; }
+.portal-hero h1 { margin: 12px 0; max-width: 560px; }
+.portal-hero p:not(.portal-eyebrow) { color: #e0ede0; max-width: 420px; }
+.portal-hero-mark { position: absolute; z-index: -1; right: 4%; width: clamp(145px, 28vw, 310px); height: auto; color: #b6dfb7; opacity: .21; transform: rotate(-12deg); }
+.portal-cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 22px; padding: 10px 14px; border: 0; border-radius: 9px; background: #e0edca; color: #18392e; font-weight: 750; }
+.portal-cta:hover { background: #f3f9e3; }
+.portal-section { margin-top: 26px; }
+.portal-section > h2 { margin-bottom: 10px; font-size: 20px; }
+.service-grid, .portal-grid { display: grid; gap: 14px; }
+.service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.portal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.service-tile { position: relative; text-align: left; display: grid; gap: 5px; padding: 16px; align-content: start; }
+.service-tile:hover { background: #edf5ec; border-color: #9abda7; }
+.service-tile > span:not(.service-icon), .portal-card > p, .tools-header p { color: var(--muted); font-size: 14px; }
+.service-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: #e5f1e5; color: var(--green); margin-bottom: 5px; }
+.service-arrow { position: absolute; top: 18px; right: 16px; color: var(--green); }
+.portal-card { padding: 19px; min-width: 0; }
+.portal-card h2 { display: flex; align-items: center; gap: 8px; font-size: 17px; }
+.portal-card h2 svg { color: var(--green); }
+.portal-card > p, .portal-card > .text-button { margin-top: 7px; }
+.tools-header { margin: 10px 0 22px; }
+.tools-header p { margin-top: 9px; }
+.tool-fields { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin-block: 15px; }
+.tool-fields label { display: grid; flex: 1 1 135px; gap: 4px; font-size: 13px; font-weight: 650; min-width: 0; }
+.tool-fields input { width: 100%; min-width: 0; padding: 8px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: #fafcf9; }
+.attendance-result { display: grid; gap: 5px; background: #eef5ed; border-radius: 9px; padding: 11px; font-size: 14px; }
+.attendance-result strong { font-size: 23px; }
+.attendance-result progress { width: 100%; accent-color: var(--green); }
+.portal-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.portal-list li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 0; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+.portal-list label { display: flex; align-items: start; gap: 8px; font-size: 14px; min-width: 0; }
+.portal-list input { accent-color: var(--green); }
+.portal-list .text-button { text-align: left; }
+.portal-list time { display: block; color: var(--muted); font-size: 12px; }
+.task-done span { text-decoration: line-through; color: var(--muted); }
+.portal-icon-button { display: grid; place-items: center; flex: 0 0 32px; min-height: 32px; border: 0; border-radius: 6px; background: #eef5ed; color: var(--green); }
+.portal-icon-button:hover { background: #dfece1; }
+.bookmark-button { margin-top: 7px; }
+.bookmark-button[aria-pressed="true"] svg { fill: #c0dfc7; }
+@media (max-width: 760px) {
+  .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portal-grid { grid-template-columns: 1fr; }
+  .bar-inner { flex-wrap: wrap; gap: 7px; padding-block: 9px; }
+  .bar-inner nav { flex-wrap: wrap; }
+  .portal-hero { min-height: 270px; }
+}

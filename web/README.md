@@ -1,16 +1,7 @@
-# React + Vite
+# CampusClarity web prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Run from this directory with `npm ci` and `npm run dev`. Use `npm run build` for a production bundle and `npm run lint` for static checks.
 
-Currently, two official plugins are available:
+The web demo runs entirely in the browser. It matches supported question patterns against the bundled sample handbook and returns either an answer with an exact quote and section ID or a referral to the Academic Office. The handbook view supports keyword search, topic filters and direct navigation from a citation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The sample text lives in `src/data/student_handbook.json`. Review the rule mappings in `src/utils/engine.js` whenever section IDs or the order of clauses changes. The repository's separate Python and prompt files hold the model experiment.

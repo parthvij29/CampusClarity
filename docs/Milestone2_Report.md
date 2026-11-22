@@ -120,7 +120,7 @@
 
 ### (a) What is Built
 We have developed a complete, end-to-end grounded query answering workflow:
-1. **Curated Policy Knowledge Base:** A structured corpus (`data/student_handbook.json`) of 10 university policy sections spanning Attendance, Grading, Examinations, Fees, and Hostel rules.
+1. **Curated Policy Knowledge Base:** A structured corpus (`web/src/data/student_handbook.json`) of 10 university policy sections spanning Attendance, Grading, Examinations, Fees, and Hostel rules.
 2. **Document Grounding Retriever:** A fast lexical-semantic matching engine extracting relevant clauses.
 3. **Prompt Pipeline:** Production prompt `P1_CampusHelpdesk_v3` with dual few-shot exemplars and raw JSON enforcement.
 4. **Integrity Auditor:** A Python verifier testing exact substring containment of quotes against official handbook text.
@@ -199,7 +199,7 @@ We have developed a complete, end-to-end grounded query answering workflow:
 | Member Name | Enrollment No. | Role | Tasks Done in Milestone 2 | Evidence | Contribution (%) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Parth Vij (Lead)** | S24CSEU1616 | Lead & Prompt Architecture | Wrote prompt versions v1, v2, v3; designed few-shot refusal exemplars; hyperparameter tuning (T=0.2). | `prompts/final/P1_CampusHelpdesk_v3.txt`, `prompts/v1/P1_v1.txt` | **20%** |
-| **Maitreyi Chaudhary** | S24CSEU0217 | Knowledge Base Engineering | Curated student handbook (10 sections across 5 domains); labelled Section IDs and keywords. | `data/student_handbook.json` | **16%** |
+| **Maitreyi Chaudhary** | S24CSEU0217 | Knowledge Base Engineering | Curated student handbook (10 sections across 5 domains); labelled Section IDs and keywords. | `web/src/data/student_handbook.json` | **16%** |
 | **Madhav Puri** | S24CSEU0211 | Retrieval & Grounding | Built lexical grounding retriever and dynamic prompt context formatting logic. | `code/engine.py` (lines 20–55) | **16%** |
 | **Prashant Mangal** | S24CSEU1615 | Prototype & UI Engineering | Built interactive Streamlit web application, live context preview, and quote highlighting. | `code/app.py` | **16%** |
 | **Kushagra Garg** | S24CSEU0055 | Integrity & Schema Auditor | Developed raw JSON schema validation and verbatim substring containment verifier. | `code/engine.py` (lines 56–120) | **16%** |

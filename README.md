@@ -1,14 +1,17 @@
 # Campus Helpdesk Assistant (Problem Pool C1)
 
 **SCSE4041 Mini Project — Milestone 2**  
-*5-Stage Modular Prompt Pipeline with Full-Stack React Web Application & Vercel Cloud Deployment*
+*React web prototype and prompt-engineering experiments*
 
 ---
 
 ## 📌 Project Overview
 University rules on attendance, grading, exams, fees, and hostels are distributed across lengthy handbooks, circulars, and notices that undergo revisions each academic year. Students often skip reading these documents and turn to seniors, WhatsApp groups, or generic AI chatbots, leading to outdated advice, severe hallucinated rules, and overwhelming administrative burdens.
 
-The **Campus Helpdesk Assistant** is an audited, 5-stage prompt engineering workflow grounded strictly in official university policy text:
+**CampusClarity** is the student-facing prototype. It runs a local, clause-based matcher against 10 sample policy sections in [the bundled handbook](web/src/data/student_handbook.json). A response includes a plain-language answer where supported, an exact quote, a section ID and a status. Unmatched questions direct students to the Academic Office. The React demo requires no API key and makes no model calls. It has limited paraphrase and multi-part question coverage, and the sample corpus should not be used to make real university decisions.
+
+The separate prompt experiments in `prompts/` describe this five-stage design:
+
 1. **P1_Intent_Classifier:** Classifies inquiry into Attendance, Grading, Examinations, Fees, Hostel, or Out_Of_Scope.
 2. **P2_Context_Extractor:** Selectively prunes candidate handbook sections to isolate operative policy text.
 3. **P3_Grounded_Answerer:** Formulates an explanation in plain, accessible language with zero extrapolation.
@@ -51,7 +54,7 @@ cd web
 npm install
 npm run dev
 ```
-Open your browser at `http://localhost:5173`. You will see the interactive dashboard with the live 5-prompt visualizer, presets, and handbook explorer!
+Open your browser at `http://localhost:5173`. Ask a question, inspect the cited section in the searchable handbook, or expand the four-field JSON output.
 
 ### 2. Deploy to Vercel (1-Click Deployment)
 1. Push your repository to GitHub:

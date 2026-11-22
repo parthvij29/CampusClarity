@@ -8,7 +8,7 @@ import json
 import re
 from typing import Dict, Any, List, Optional, Tuple
 
-DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "student_handbook.json")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "web", "src", "data", "student_handbook.json")
 
 def load_handbook() -> List[Dict[str, Any]]:
     """Loads all policy sections from the student handbook JSON file."""

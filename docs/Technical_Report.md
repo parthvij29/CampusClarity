@@ -39,7 +39,7 @@ The Campus Helpdesk Assistant is structured as a closed-domain, document-grounde
 - **Foundation LLM:** Google Gemini 1.5 Flash (via `google-genai` SDK v2.29). Chosen for its high adherence to negative constraints, low latency (<850ms), and large 1M context window for multi-document grounding.
 - **Model Hyperparameters:** Temperature set strictly to `0.2` with Top-P at `0.8` to suppress creative divergence and force deterministic verbatim extraction.
 - **Application Interface:** Streamlit (v1.66.0) for the interactive evaluator client, providing live grounding inspection, verbatim quote highlighting, and real-time schema validation badges.
-- **Verification Engine:** Python-based lexical parser and substring auditor running automated integrity checks against `data/student_handbook.json`.
+- **Verification Engine:** Python-based lexical parser and substring auditor running automated integrity checks against `web/src/data/student_handbook.json`.
 
 ---
 

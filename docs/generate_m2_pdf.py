@@ -351,7 +351,7 @@ def build_milestone_2_pdf():
     story.append(Paragraph("(a) What is Built", sub_heading_style))
     story.append(Paragraph(
         "We have implemented a fully functioning, robust campus policy guidance system consisting of: "
-        "<b>(1) Official Handbook Knowledge Store:</b> A structured JSON corpus (<code>data/student_handbook.json</code>) holding 10 official sections across 5 categories. "
+        "<b>(1) Official Handbook Knowledge Store:</b> A structured JSON corpus (<code>web/src/data/student_handbook.json</code>) holding 10 official sections across 5 categories. "
         "<b>(2) Grounding Engine:</b> Sub-millisecond keyword and lexical alignment matcher extracting relevant policy clauses. "
         "<b>(3) 5-Prompt Pipeline:</b> <code>P1</code> to <code>P5</code> operating sequentially with Gemini 1.5 Flash (T=0.2). "
         "<b>(4) Integrity & Substring Auditor:</b> Automated verification layer checking verbatim substring containment. "
@@ -664,7 +664,7 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
             Paragraph("S24CSEU0217", table_cell),
             Paragraph("Knowledge Base Engineering", table_cell),
             Paragraph("Curated official student handbook JSON across 5 domains; labelled Section IDs and keywords.", table_cell),
-            Paragraph("<code>data/student_handbook.json</code>", table_cell),
+            Paragraph("<code>web/src/data/student_handbook.json</code>", table_cell),
             Paragraph("16%", table_cell_bold)
         ],
         [

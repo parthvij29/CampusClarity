@@ -1,5 +1,12 @@
 # CHANGELOG: Campus Helpdesk Assistant
 
+## 2026-11-22 ? CampusClarity web redesign
+
+- Rebuilt the student interface around questions, exact citations, and a searchable handbook.
+- Added clause-level matching for the local demo and labelled the bundled policies as sample data.
+- Consolidated the web and Python prototypes on one handbook file.
+
+
 All notable changes from Milestone 1 conceptualization to Milestone 2 implementation and testing.
 
 ---
