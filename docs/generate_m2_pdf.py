@@ -184,7 +184,7 @@ def build_milestone_2_pdf():
     story.append(Paragraph("The Three Deliverable Links:", sub_heading_style))
     links_data = [
         [Paragraph("<b>Deliverable</b>", table_hdr), Paragraph("<b>Link (Public / Anyone with Link can View)</b>", table_hdr)],
-        [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph("https://campus-helpdesk-assistant.vercel.app<br/><i>(Live Modern React / Node Web Application deployed on Vercel; runnable via <code>cd web && npm run dev</code>)</i>", table_cell)],
+        [Paragraph("<b>Prototype Link (Q11)</b>", table_cell_bold), Paragraph('<link href="https://campus-clarity-xo49.vercel.app/">https://campus-clarity-xo49.vercel.app/</link><br/><i>Live CampusClarity React prototype on Vercel</i>', table_cell)],
         [Paragraph("<b>Repository Link (Q12)</b>", table_cell_bold), Paragraph("https://github.com/parthvij29/CampusClarity<br/><i>(Public GitHub repo with README, prompts, code, web, test-data, docs, changelog)</i>", table_cell)],
         [Paragraph("<b>Reel Link (Q13, Q14)</b>", table_cell_bold), Paragraph("https://youtu.be/unlisted-reel-link<br/><i>(Unlisted YouTube demo; <b>Exact Length: 118 seconds</b>)</i>", table_cell)]
     ]
@@ -628,18 +628,18 @@ Output as JSON: {"answer": ..., "quoted_source_text": ..., "section_id": ..., "s
     story.append(Paragraph("Section 6: Supporting Document", sec_heading_style))
     story.append(Paragraph(
         "<b>Document Type Selected (Q15):</b> Technical Report<br/>"
-        "<b>Filename Uploaded (Q16):</b> <code>PolicyGuard_TechnicalReport.pdf</code><br/>"
+        "<b>Supporting Filename (Q16):</b> <code>PromptForge_TchnicalReport.pdf</code><br/>"
         "<i>Summary of Embedded Technical Report:</i><br/>"
-        "The complete 2-page Technical Report has been compiled and is submitted as a separate standalone PDF (<code>PolicyGuard_TechnicalReport.pdf</code>). Below is the full text of the technical specification covering Architecture, Tools & Models, Prompt Design, Test Results, and Limitations.",
+        "The standalone technical report describes the current CampusClarity web prototype, the separate prompt experiments, test results and limitations.",
         body_style
     ))
 
     tech_summary = """TECHNICAL REPORT EXECUTIVE SUMMARY:
-- System Architecture: 5-stage modular prompt pipeline (P1 Intent Classifier -> P2 Context Extractor -> P3 Grounded Answerer -> P4 Citation Substring Extractor -> P5 Safety Refusal Guard).
-- Tools & Models: Google Gemini 1.5 Flash in Google Antigravity / Google AI Studio, Temperature 0.2, React + Node.js (Vite) Web Application deployed on Vercel.
-- Prompt Engineering: 3 iterations leading to a 5-prompt production pipeline.
-- Empirical Results: 100% JSON schema validity (up from 0%), 100% citation verifiability (up from 0%), 71.4% refusal accuracy, 95% overall benchmark score across 40 test cases.
-- Limitations & Future Work: Multi-clause conflict resolution critic, ChromaDB semantic embeddings, and input adversarial intent classifier planned for Milestone 3."""
+- System Architecture: React portal with a local policy matcher, ten sample handbook sections and browser-saved student tools.
+- Tools and Models: React, JavaScript, Vite and Node.js. Gemini is optional in the separate Python prompt experiment.
+- Prompt Engineering: Three iterations and five final prompt artifacts.
+- Web Engine Results: 40 expected status and section outcomes matched, with 33 verified quotes and seven expected refusals.
+- Limitations: Simulated policies, narrow wording coverage and limited multi-section reasoning."""
     story.append(Paragraph(tech_summary.replace("\n", "<br/>").replace(" ", "&nbsp;"), code_block_style))
 
     story.append(Spacer(1, 10))

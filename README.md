@@ -40,7 +40,7 @@ The separate prompt experiments in `prompts/` describe this five-stage design:
 ---
 
 ## 🔗 Important Links
-- **Prototype Link (Vercel):** `https://campus-helpdesk-assistant.vercel.app` *(or your team's Vercel deployment URL)*
+- **Prototype Link (Vercel):** [CampusClarity](https://campus-clarity-xo49.vercel.app/)
 - **GitHub Repository:** https://github.com/parthvij29/CampusClarity
 - **Reel Link (90–150s):** Drive / Unlisted YouTube Video Link *(Exact length in seconds: 118s)*
 

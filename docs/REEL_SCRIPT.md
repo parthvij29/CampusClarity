@@ -27,12 +27,12 @@
 ---
 
 ## Part 3: Live Working Prototype Demo (~50 seconds | 0:50 – 1:40)
-- **Screen Action:** Switch to browser showing live Streamlit app (`streamlit run code/app.py`).
+- **Screen Action:** Open [CampusClarity on Vercel](https://campus-clarity-xo49.vercel.app/) and click **Ask a policy question**.
   1. *[0:50 - 1:05]* Select Normal preset: "What is the minimum attendance required to appear in exams?" Click Submit.
   2. *[1:05 - 1:20]* Highlight output card: Green badge `STATUS: ANSWERED`, plain English answer, highlighted green quote block, and `[SEC-ATT-101]` badge with passing substring audit.
   3. *[1:20 - 1:40]* Test Out-of-Scope query: Select "What is the campus Wi-Fi password for students?" Click Submit. Show amber badge `STATUS: NOT FOUND`, null quotes, and automatic routing to the Academic Office.
 - **Voiceover:**
-  > "Now let's see the live prototype in action. Here on our Streamlit web application, we select a standard student query: 'What is the minimum attendance required to appear in exams?'
+  > "Now let's see the live CampusClarity prototype on Vercel. We start with a common student question: 'What is the minimum attendance required to sit end-term exams?'
   > When we submit, the retrieval module dynamically pulls Section SEC-ATT-101. The assistant responds with a clear explanation, extracts the exact sentence verbatim from the official handbook, and confirms verification through our substring audit engine.
   > 
   > Next, let's test an out-of-scope query: 'What is the campus Wi-Fi password?'

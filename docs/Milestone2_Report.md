@@ -22,7 +22,7 @@
 6. **S24CSEU0212** — Madhav Goyal
 
 ### The Three Deliverable Links
-- **Prototype Link (Q11):** `https://campus-helpdesk-assistant.streamlit.app` *(or local/Colab deployment link)*
+- **Prototype Link (Q11):** [CampusClarity on Vercel](https://campus-clarity-xo49.vercel.app/)
 - **GitHub Repository Link (Q12):** `https://github.com/parthvij29/CampusClarity`
 - **Reel Demonstration Link (Q13):** `https://youtu.be/unlisted-reel-link` *(Exact Duration: 118 seconds)*
 
@@ -190,7 +190,7 @@ We have developed a complete, end-to-end grounded query answering workflow:
 
 # Section 6: Supporting Document
 
-*(Refer to complete text in `docs/Technical_Report.md` and compiled PDF `PolicyGuard_TechnicalReport.pdf`)*
+*(Refer to complete text in `docs/Technical_Report.md` and compiled PDF `PromptForge_TchnicalReport.pdf`)*
 
 ---
 
