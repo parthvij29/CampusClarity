@@ -1,6 +1,6 @@
-# CampusClarity Technical Report
+# Campus Clarity Technical Report
 
-Campus Helpdesk Assistant | PromptForge | SCSE4041 Prompt Engineering | Milestone 2 | Problem Pool C1
+PromptForge · Team ID PE-B25-34 · SCSE4041 Prompt Engineering · Milestone 2 · Problem Pool C1
 
 ## 1. Architecture
 
@@ -25,6 +25,17 @@ The Vite production build passed. The current JavaScript engine was run against 
 ## 5. Limitations
 
 The handbook contains simulated policies. Rule-based matching has limited coverage for unfamiliar wording, Hinglish, multi-part questions and cases that require combining multiple policy sections. Calculator results use the standard threshold and assume the student attends each upcoming class in the estimate. Saved items are specific to the current browser.
+
+## 6. Team Contributions
+
+| Enrollment number | Name | Main task |
+| --- | --- | --- |
+| S24CSEU1616 | Parth Vij | Led the team and designed the five-prompt pipeline (P1–P5) and prompt iterations. |
+| S24CSEU0217 | Maitreyi Chaudhary | Curated the sample student handbook and designed the policy section IDs. |
+| S24CSEU0211 | Madhav Puri | Developed grounded policy retrieval and P1/P2 intent routing. |
+| S24CSEU1615 | Prashant Mangal | Built the React student portal and deployed the web prototype on Vercel. |
+| S24CSEU0055 | Kushagra Garg | Developed the P4 verbatim citation checks and P5 JSON validation and refusal logic. |
+| S24CSEU0212 | Madhav Goyal | Created the 12 report test cases and 40 benchmark cases and prepared the technical report. |
 
 Live prototype | https://campus-clarity-xo49.vercel.app/
 
